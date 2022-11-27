@@ -53,22 +53,51 @@ map::~map() {   /* map destructor frees the allocated memory */
 
 ostream &operator<<(ostream &left, const map &right) {  /* << overloading */
     int i, j, k;
+    // First row 
+    left << "╔";
+    for (i = 0 ; i < right.y  ; i++) {
+        left << "═══╦";
+    }
+    left << "\b╗" << endl << "║ ";
+    for (j = 0 ; j < right.y; j++)
+        left << right.m[0][j] << " ║ ";
+    left << endl;
+    //Box 
+    for (i = 1 ; i < right.x ; i++) {
+        // This is used to print in-between lines 
+        left << "╠";
+        for (k = 0 ; k < right.y ; k++)
+            left << "═══╬";
+        left << "\b╣";
+        left << endl << "║ ";
+        // This is used to print the boxes 
+        for (j = 0 ; j < right.y ; j++)
+            left << right.m[i][j] << " ║ ";
+        left << endl;
+    }
+    //Last line
+     left << "╚";
+    for (j = 0 ; j < right.y; j++)
+        left << "═══╩";
+    left << "\b╝" << endl;
+/*
+    int i, j, k;
     for (i = 0 ; i < right.x ; i++) {
-        /* This is used to print in-between lines */
+        // This is used to print in-between lines 
         left << "+";
         for (k = 0 ; k < right.y ; k++)
             left << "---+";
         left << endl << "| ";
-        /* This is used to print the boxes */
+        // This is used to print the boxes 
         for (j = 0 ; j < right.y ; j++)
             left << right.m[i][j] << " | ";
         left << endl;
     }
-    /* This is used to print the bottom line */
+    // This is used to print the bottom line 
     left << "+";
     for (k = 0 ; k < right.y ; k++)
         left << "---+";
-    left << endl;
-
+    left << endl; 
+*/
     return left;
 }

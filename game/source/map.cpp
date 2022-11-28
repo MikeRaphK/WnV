@@ -80,24 +80,6 @@ ostream &operator<<(ostream &left, const map &right) {  /* << overloading */
     for (j = 0 ; j < right.y; j++)
         left << "═══╩";
     left << "\b╝" << endl;
-/*
-    int i, j, k;
-    for (i = 0 ; i < right.x ; i++) {
-        // This is used to print in-between lines 
-        left << "+";
-        for (k = 0 ; k < right.y ; k++)
-            left << "---+";
-        left << endl << "| ";
-        // This is used to print the boxes 
-        for (j = 0 ; j < right.y ; j++)
-            left << right.m[i][j] << " | ";
-        left << endl;
-    }
-    // This is used to print the bottom line 
-    left << "+";
-    for (k = 0 ; k < right.y ; k++)
-        left << "---+";
-    left << endl; 
-*/
+    
     return left;
 }

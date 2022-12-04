@@ -4,12 +4,12 @@
 #include "../include/map.hpp"
 using namespace std;
 
-map::map(int in_x, int in_y) {  /* map constructor allocates memory and initializes the board */
+map::map(int in_x, int in_y) {  // map constructor allocates memory and initializes the board 
     int i, j;
     x = in_x;
     y = in_y;
 
-    /* memory allocation */
+    // memory allocation 
     m = new char*[x];
     if (!m) cout << "Error allocating memory" << endl;
 
@@ -18,18 +18,18 @@ map::map(int in_x, int in_y) {  /* map constructor allocates memory and initiali
         if (!m[i]) cout << "Error allocating memory" << endl;
     }
 
-    /* entity init */
+    // entity init 
     for (j = 0 ; j < y ; j++) {
-        /* v: vampire , w: werewolf */
+        // v: vampire , w: werewolf 
         m[0][j] = 'v';
         m[x-1][j] = 'w';
     }
 
-    /* terrain init */
+    // terrain init 
     for (i = 1 ; i < x-1 ; i++) {
         for (j = 0 ; j < y ; j++) {
-            /* '.': Water , '*': Tree , "Empty": Land*/
-            int rng = rand()%20;    /* get a random number from 0-20. this allows us to get a 5% chance for Tree, 5% for Water and 90% for Land*/
+            // '.': Water , '*': Tree , "Empty": Land
+            int rng = rand()%20;    // get a random number from 0-20. this allows us to get a 5% chance for Tree, 5% for Water and 90% for Land
             switch (rng) {
             case 0:
                 m[i][j] = '.';
@@ -45,13 +45,28 @@ map::map(int in_x, int in_y) {  /* map constructor allocates memory and initiali
     }
 }
 
-map::~map() {   /* map destructor frees the allocated memory */
+map::~map() {   // map destructor frees the allocated memory
     for (int i = 0 ; i < x ; i++)
         delete[] m[i];
     delete[] m;
 }
 
-ostream &operator<<(ostream &left, const map &right) {  /* << overloading */
+bool map::is_obstacle(int in_x, int in_y) { // returns true if there is an obstacle in the selected position, false otherwise
+    if (in_x >= x || in_y >= y) return false;
+    return m[in_x][in_y] == '.' || m[in_x][in_y] == '*';
+}
+
+bool map::is_vampire(int in_x, int in_y) { // returns true if there is a vampire in the selected position, false otherwise 
+    if (in_x >= x || in_y >= y) return false;
+    return m[in_x][in_y] == 'v' || m[in_x][in_y] == 'V';
+}
+
+bool map::is_werewolf(int in_x, int in_y) { // returns true if there is a vampire in the selected position, false otherwise 
+    if (in_x >= x || in_y >= y) return false;
+    return m[in_x][in_y] == 'w' || m[in_x][in_y] == 'W';
+}
+
+ostream &operator<<(ostream &left, const map &right) {  // << overloading
     int i, j, k;
     // First row 
     left << "╔";

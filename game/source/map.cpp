@@ -43,6 +43,9 @@ map::map(int in_x, int in_y) {  // map constructor allocates memory and initiali
             }
         }
     }
+
+    // potion init
+    m[1+rand()%(x-2)][rand()%y] = 'P';
 }
 
 map::~map() {   // map destructor frees the allocated memory

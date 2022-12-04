@@ -13,8 +13,8 @@ class entity {
         bool is_dead();
         friend ostream &operator<<(ostream &left, const entity &right);
     protected:
-        int attack;
-        int defense;
+        const int attack;
+        const int defense;
         int health;
         int potion;
 };

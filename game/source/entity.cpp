@@ -1,9 +1,8 @@
 #include <cstdlib>
 #include "entity.hpp"
 
-entity::entity() {  // attack: [1,3], defense: [1,2], attack: [0,2]
-    attack = 1 + rand()%3;
-    defense = 1 + rand()%2;
+// attack and defense are const so we use initializer list for them
+entity::entity() : attack(1 + rand()%3), defense(1 + rand()%2) {  // attack: [1,3], defense: [1,2], attack: [0,2]
     potion = rand()%3;
     health = 10;
 }

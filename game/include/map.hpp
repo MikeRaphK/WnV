@@ -1,6 +1,6 @@
 #pragma once
-#include <iostream>
-using std::ostream;
+#include "common.hpp"
+
 class map {
     public:
         map(int in_x, int in_y);

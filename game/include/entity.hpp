@@ -1,6 +1,5 @@
 #pragma once
-#include <iostream>
-using std::ostream;
+#include "common.hpp"
 
 class entity {
     public:

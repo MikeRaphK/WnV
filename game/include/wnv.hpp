@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include "common.hpp"
 #include "map.hpp"
 #include "entity.hpp"
 

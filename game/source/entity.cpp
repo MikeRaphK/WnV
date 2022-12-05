@@ -42,6 +42,6 @@ bool entity::is_dead() {
 }
 
 ostream &operator<<(ostream &left, const entity &right) {  // << overloading
-    left << "Attack: " << right.attack << " Defense: " << right.defense << " Health: " << right.health << " Potion: " << right.potion;
+    left << "Attack: " << right.attack << " Defense: " << right.defense << " Health: " << right.health << " Potion: " << right.potion << " Pos: (" << right.x << "," << right.y << ")";
     return left;
 }

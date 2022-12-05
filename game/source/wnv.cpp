@@ -6,9 +6,17 @@ wnv::wnv(int in_x, int in_y) : m(in_x, in_y) {
     x = in_x;
     y = in_y;
     entity_count = 2*x;
+    daytime = "Day";
     werewolves = new entity[x];
     vampires = new entity[x];
-    daytime = "Day";
+
+    for (int i = 0 ; i < y ; i++) {
+        vampires[i].set_x(0);
+        vampires[i].set_y(i);
+
+        werewolves[i].set_x(x-1);
+        werewolves[i].set_y(i);
+    }
 };
 
 wnv::~wnv() {

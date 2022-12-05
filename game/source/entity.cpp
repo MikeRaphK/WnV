@@ -23,6 +23,14 @@ int entity::get_potion() const {
     return potion;
 }
 
+void entity::set_x(int in_x) {
+    x = in_x;
+}
+
+void entity::set_y(int in_y) {
+    y = in_y;
+}
+
 void entity::do_attack(entity &enemy) { // current entity attacks enemy
     int damage = attack - enemy.defense;
     if (damage < 0) damage = 0;

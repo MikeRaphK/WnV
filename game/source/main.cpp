@@ -42,8 +42,11 @@ int main() {
     // map m(x, y);
     // cout << m;
 
-    wnv game(5, 5);
+    wnv game(4, 4);
     cout << game;
+    game.print_werewolves();
+    cout << endl;
+    game.print_vampires();
 
     return 0;
 }

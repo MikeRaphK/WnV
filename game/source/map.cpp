@@ -71,30 +71,49 @@ bool map::is_werewolf(int in_x, int in_y) { // returns true if there is a vampir
 
 ostream &operator<<(ostream &left, const map &right) {  // << overloading
     int i, j, k;
+    //top row of numbers 
+    left << "WvV   ";
+    for (i = 0 ; i < right.y ; i++) {
+        if (i < 9)
+            left << i << "   "; //1 digit numbers 
+        else if (i < 100)
+            left << i << "  "; //2 digit numbers
+        else
+            left << i << " "; //3 digit numbers
+    }
+    left << endl;
     // First row 
-    left << "╔";
+    left << "    ╔";
     for (i = 0 ; i < right.y  ; i++) {
         left << "═══╦";
     }
-    left << "\b╗" << endl << "║ ";
+    left << "\b╗" << endl << "0   "<< "║ ";
     for (j = 0 ; j < right.y; j++)
         left << right.m[0][j] << " ║ ";
     left << endl;
     //Box 
     for (i = 1 ; i < right.x ; i++) {
+        
         // This is used to print in-between lines 
-        left << "╠";
+        left << "    ╠";
         for (k = 0 ; k < right.y ; k++)
             left << "═══╬";
         left << "\b╣";
-        left << endl << "║ ";
+        left << endl;
+        if (i < 10)
+            left << i << "  "; //1 digit numbers 
+        else if (i < 100)
+            left << i << " "; //2 digit numbers
+        else
+            left << i; //3 digit numbers
+        left << " ║ "; 
         // This is used to print the boxes 
         for (j = 0 ; j < right.y ; j++)
             left << right.m[i][j] << " ║ ";
         left << endl;
     }
     //Last line
-     left << "╚";
+     left << "    ╚";
     for (j = 0 ; j < right.y; j++)
         left << "═══╩";
     left << "\b╝" << endl;

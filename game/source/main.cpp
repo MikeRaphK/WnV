@@ -42,7 +42,7 @@ int main() {
     // map m(x, y);
     // cout << m;
 
-    wnv game(4, 4);
+    wnv game(8, 8);
     cout << game;
     game.print_werewolves();
     cout << endl;

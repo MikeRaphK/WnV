@@ -42,7 +42,7 @@ int main() {
     // map m(x, y);
     // cout << m;
 
-    wnv game(8, 8);
+    wnv game(10, 10);
     cout << game;
 
     return 0;

@@ -18,15 +18,8 @@ map::map(int in_x, int in_y) {  // map constructor allocates memory and initiali
         if (!m[i]) cout << "Error allocating memory" << endl;
     }
 
-    // entity init 
-    for (j = 0 ; j < y ; j++) {
-        // v: vampire , w: werewolf 
-        m[0][j] = 'v';
-        m[x-1][j] = 'w';
-    }
-
     // terrain init 
-    for (i = 1 ; i < x-1 ; i++) {
+    for (i = 0 ; i < x ; i++) {
         for (j = 0 ; j < y ; j++) {
             // '.': Water , '*': Tree , "Empty": Land
             int rng = rand()%20;    // get a random number from 0-20. this allows us to get a 5% chance for Tree, 5% for Water and 90% for Land
@@ -45,7 +38,23 @@ map::map(int in_x, int in_y) {  // map constructor allocates memory and initiali
     }
 
     // potion init
-    m[1+rand()%(x-2)][rand()%y] = 'P';
+    m[rand()%x][rand()%y] = 'P';
+
+    //entity init 
+    for( i = 0 ; i < (x*y/15) * 2 ; i++ ) {
+        char temp;
+        int k,l;
+        do {
+            k = rand()%x;
+            l = rand()%y;
+            temp = m[k][l];
+        }while ( temp != ' ');
+        
+        if (i % 2 == 0) 
+            m[k][l] = 'w';
+        else
+            m[k][l] = 'v';  
+    }
 }
 
 map::~map() {   // map destructor frees the allocated memory

@@ -72,7 +72,7 @@ bool map::is_werewolf(int in_x, int in_y) { // returns true if there is a vampir
 ostream &operator<<(ostream &left, const map &right) {  // << overloading
     int i, j, k;
     //top row of numbers 
-    left << "WvV   ";
+    left << "WnV   ";
     for (i = 0 ; i < right.y ; i++) {
         if (i < 9)
             left << i << "   "; //1 digit numbers 

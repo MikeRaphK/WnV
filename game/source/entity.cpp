@@ -2,9 +2,11 @@
 #include "entity.hpp"
 
 // attack and defense are const so we use initializer list for them
-entity::entity() : attack(1 + rand()%3), defense(1 + rand()%2) {  // attack: [1,3], defense: [1,2], attack: [0,2]
+entity::entity(int in_x, int in_y) : attack(1 + rand()%3), defense(1 + rand()%2) {  // attack: [1,3], defense: [1,2], attack: [0,2]
     potion = rand()%3;
     health = 10;
+    x = in_x;
+    y = in_y;
 }
 
 int entity::get_attack() const {
@@ -21,14 +23,6 @@ int entity::get_health() const {
 
 int entity::get_potion() const {
     return potion;
-}
-
-void entity::set_x(int in_x) {
-    x = in_x;
-}
-
-void entity::set_y(int in_y) {
-    y = in_y;
 }
 
 void entity::do_attack(entity &enemy) { // current entity attacks enemy

@@ -1,7 +1,7 @@
-#include <iostream>
 #include "common.hpp"
 #include "map.hpp"
 #include "entity.hpp"
+#include "vampire.hpp"
 
 class wnv {
     public:
@@ -16,7 +16,4 @@ class wnv {
         int y;
         int entity_count;
         map m;
-        entity *werewolves;
-        entity *vampires;
-        std::string daytime;
 };

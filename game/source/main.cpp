@@ -44,9 +44,6 @@ int main() {
 
     wnv game(8, 8);
     cout << game;
-    game.print_werewolves();
-    cout << endl;
-    game.print_vampires();
 
     return 0;
 }

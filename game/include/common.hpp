@@ -1,4 +1,3 @@
 #include <iostream>
-using std::ostream;
-
 #include <string>
+using namespace std;

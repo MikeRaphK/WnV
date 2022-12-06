@@ -12,6 +12,8 @@ class entity {
         void set_x(int in_x);
         int get_y() const;
         void set_y(int in_y);
+        int get_identifier();
+        void set_identifier(int in_identifier);
         void do_attack(entity &enemy);
         bool is_dead();
         friend ostream &operator<<(ostream &left, const entity &right);
@@ -22,4 +24,5 @@ class entity {
         int potion;
         int x;
         int y;
+        int id;
 };

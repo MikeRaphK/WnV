@@ -39,6 +39,14 @@ void entity::set_y(int in_y) {
     y = in_y;
 }
 
+int entity::get_identifier() {
+    return id;
+}
+
+void entity::set_identifier(int in_identifier) {
+    id = in_identifier;
+}
+
 void entity::do_attack(entity &enemy) { // current entity attacks enemy
     int damage = attack - enemy.defense;
     if (damage < 0) damage = 0;

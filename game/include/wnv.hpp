@@ -2,6 +2,7 @@
 #include "map.hpp"
 #include "entity.hpp"
 #include "vampire.hpp"
+#include "werewolf.hpp"
 
 class wnv {
     public:
@@ -13,4 +14,5 @@ class wnv {
         int y;
         map m;
         vampire *vampires;
+        werewolf *werewolfs;
 };

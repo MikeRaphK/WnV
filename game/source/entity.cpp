@@ -57,6 +57,8 @@ bool entity::is_dead() {
     return health <= 0;
 }
 
+void entity::move(int in_x, int in_y) {}
+
 ostream &operator<<(ostream &left, const entity &right) {  // << overloading
     left << "Attack: " << right.attack << " Defense: " << right.defense << " Health: " << right.health << " Potion: " << right.potion << " Pos: (" << right.x << "," << right.y << ")";
     return left;

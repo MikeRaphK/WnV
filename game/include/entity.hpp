@@ -16,6 +16,7 @@ class entity {
         void set_identifier(int in_identifier);
         void do_attack(entity &enemy);
         bool is_dead();
+        virtual void move(int in_x, int in_y);
         friend ostream &operator<<(ostream &left, const entity &right);
     protected:
         const int attack;

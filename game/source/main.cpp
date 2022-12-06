@@ -44,6 +44,5 @@ int main() {
 
     wnv game(10, 10);
     cout << game;
-
     return 0;
 }

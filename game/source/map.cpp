@@ -129,3 +129,7 @@ ostream &operator<<(ostream &left, const map &right) {  // << overloading
     
     return left;
 }
+
+char* map::operator[](int i) {
+    return m[i];
+}

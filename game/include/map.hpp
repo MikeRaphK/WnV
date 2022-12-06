@@ -9,6 +9,7 @@ class map {
         bool is_vampire(int in_x, int in_y);
         bool is_werewolf(int in_x, int in_y);
         friend ostream &operator<<(ostream &left, const map &right);
+        char* operator[](int i);
     private:
         int x;
         int y;

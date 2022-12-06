@@ -3,12 +3,14 @@
 
 class entity {
     public:
-        entity(int in_x, int in_y);
+        entity();
         int get_attack() const;
         int get_defense() const;
         int get_health() const;
         int get_potion() const;
+        int get_x() const;
         void set_x(int in_x);
+        int get_y() const;
         void set_y(int in_y);
         void do_attack(entity &enemy);
         bool is_dead();

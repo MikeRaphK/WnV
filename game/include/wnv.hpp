@@ -12,4 +12,5 @@ class wnv {
         int x;
         int y;
         map m;
+        vampire *vampires;
 };

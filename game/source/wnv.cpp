@@ -2,7 +2,7 @@
 #include "vampire.hpp"
 #include "werewolf.hpp"
 
-wnv::wnv(int in_x, int in_y) : m(in_x, in_y) {
+wnv::wnv(int in_x, int in_y, char race) : m(in_x, in_y), player(race) {
     x = in_x;
     y = in_y;
 //-------------vampires-----------------------    
@@ -31,7 +31,16 @@ wnv::wnv(int in_x, int in_y) : m(in_x, in_y) {
             }
         }
     }
+
+//-------------player-----------------------
+    if (player.is_vampire()) player = vampires[rand()%(x*y/15)];
+    else player = werewolfs[x*y/15];
+    m[player.get_x()][player.get_y()] = 'A';
 };
+
+void wnv::player_stats() {  // prints the player's stats to the screen
+    player.stats();
+}
 
 void wnv::set_vampires(vampire* array) {
     vampires = array;

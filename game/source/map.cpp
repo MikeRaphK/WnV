@@ -74,6 +74,14 @@ bool map::is_werewolf(int in_x, int in_y) { // returns true if there is a vampir
     return m[in_x][in_y] == 'w' || m[in_x][in_y] == 'W';
 }
 
+int map::get_x() {
+    return x;
+}
+
+int map::get_y() {
+    return x;
+}
+
 ostream &operator<<(ostream &left, const map &right) {  // << overloading for map
     int i, j, k;
     //top row of numbers 

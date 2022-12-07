@@ -17,15 +17,15 @@ wnv::wnv(int in_x, int in_y) : m(in_x, in_y) {
             }
         }
     }
-//-------------werewolves-----------------------
+//-------------werewolfs-----------------------
     k = 0;
-    werewolves = new werewolf [x*y/15];
+    werewolfs = new werewolf [x*y/15];
     for (i = 0 ; i < x ; i++) {
         for (j = 0 ; j < y ; j++) {
             if ( m[i][j] == 'w') {
-                werewolves[k].set_x(i);
-                werewolves[k].set_y(j);
-                werewolves[k].set_identifier(k);
+                werewolfs[k].set_x(i);
+                werewolfs[k].set_y(j);
+                werewolfs[k].set_identifier(k);
                 k++;
             }
         }

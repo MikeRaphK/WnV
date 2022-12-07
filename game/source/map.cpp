@@ -82,11 +82,13 @@ int map::get_y() {
     return y;
 }
 
-bool map::is_in_map(int in_x, int in_y) {
-    if(in_x - 1 < 0 || in_y - 1 < 0 || in_x + 1 > x || in_y + 1 > y)
+bool map::in_map(int in_x, int in_y) {
+    if(in_x  < 0 || in_y < 0 || in_x + 1 > x || in_y + 1 > y) {
         return false;
-    else 
+    }
+    else {
         return true;
+    } 
 }
 
 ostream &operator<<(ostream &left, const map &right) {  // << overloading for map

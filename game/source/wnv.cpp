@@ -1,5 +1,6 @@
 #include "wnv.hpp"
-
+#include "vampire.hpp"
+#include "werewolf.hpp"
 
 wnv::wnv(int in_x, int in_y) : m(in_x, in_y) {
     x = in_x;
@@ -31,6 +32,26 @@ wnv::wnv(int in_x, int in_y) : m(in_x, in_y) {
         }
     }
 };
+
+void wnv::set_vampires(vampire* array) {
+    vampires = array;
+}
+
+void wnv::set_werewolfs(werewolf* array) {
+    werewolfs = array;
+}
+
+vampire* wnv::get_vampires() {
+    return vampires;
+}
+
+werewolf* wnv::get_werewolfs() {
+    return werewolfs;
+}
+
+map wnv::get_map() {
+    return m;
+}
 
 wnv::~wnv() {}
 

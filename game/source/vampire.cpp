@@ -5,10 +5,9 @@ vampire::vampire() : entity() {}
 vampire::~vampire() {}
 
 void vampire::move(map &m) {
-    cout << "(" << x << "," << y << ")" << endl;
+    cout << "Starting position:(" << x << "," << y << ")" << endl;
    
     cout << "↓" << endl;
-    cout << "possible_moves:\n";
     //--------------------------------------------------
     /*
     ╔═════╦═════╦═════╗
@@ -32,7 +31,6 @@ void vampire::move(map &m) {
             temp_y = y + j; //y-1, y, y+1
             if (m.in_map(temp_x,temp_y)) {
                 if( m[temp_x][temp_y] == ' ') {
-                    cout << "(" << temp_x << "," << temp_y << ")" << endl;
                     possible_moves[0][counter] = temp_x;
                     possible_moves[1][counter] = temp_y;
                     counter++;  
@@ -42,7 +40,19 @@ void vampire::move(map &m) {
     }
     counter--;
 
+    cout << "Possible_moves:\n";
+    for(int i = 0 ; i <= counter ; i++) {
+        cout << "(" << possible_moves[0][i] << "," << possible_moves[1][i] << ")\t";
+    }
+    cout << endl << m;
 
+    int the_one = rand()%(counter+1);
+    cout << "The one:\n(" << possible_moves[0][the_one] << "," << possible_moves[1][the_one] << ")\n";
+
+    m[x][y] = ' ';
+    x = possible_moves[0][the_one];
+    y = possible_moves[1][the_one];
+    m[x][y] = 'v';
 }       
 
 

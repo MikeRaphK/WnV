@@ -37,7 +37,7 @@ wnv::wnv(int in_x, int in_y, char race) : m(in_x, in_y), player(race) {
     else player = werewolfs[x*y/15];
     m[player.get_x()][player.get_y()] = 'A';
 //-----------------------------------------
-    vampires[5].move(m);
+    vampires[0].move(m);
 };
 
 void wnv::player_stats() {  // prints the player's stats to the screen

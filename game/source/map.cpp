@@ -79,7 +79,7 @@ int map::get_x() {
 }
 
 int map::get_y() {
-    return x;
+    return y;
 }
 
 ostream &operator<<(ostream &left, const map &right) {  // << overloading for map

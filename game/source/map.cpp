@@ -1,8 +1,4 @@
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include "../include/map.hpp"
-using namespace std;
+#include "map.hpp"
 
 map::map(int in_x, int in_y) {  // map constructor allocates memory and initializes the board 
     int i, j;

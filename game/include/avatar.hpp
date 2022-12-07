@@ -3,10 +3,13 @@
 
 class avatar : public entity {
     public:
-        avatar();
+        avatar(char race);
+        bool is_vampire();
+        bool is_werewold();
+        void stats();
         avatar &operator=(const vampire right);
         avatar &operator=(const werewolf right);
     private:
-        bool is_vampire;
-        bool is_werewolf;
+        bool vamp;
+        bool were;
 };

@@ -13,7 +13,7 @@ wnv::wnv(int in_x, int in_y) : m(in_x, in_y) {
             if ( m[i][j] == 'v') {
                 vampires[k].set_x(i);
                 vampires[k].set_y(j);
-                vampires[k].set_identifier(k);
+                vampires[k].set_id(k);
                 k++;
             }
         }
@@ -26,7 +26,7 @@ wnv::wnv(int in_x, int in_y) : m(in_x, in_y) {
             if ( m[i][j] == 'w') {
                 werewolfs[k].set_x(i);
                 werewolfs[k].set_y(j);
-                werewolfs[k].set_identifier(k);
+                werewolfs[k].set_id(k);
                 k++;
             }
         }

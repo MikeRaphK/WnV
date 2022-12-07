@@ -4,16 +4,17 @@
 class entity {
     public:
         entity();
+        entity(const entity &e);
         int get_attack() const;
         int get_defense() const;
         int get_health() const;
         int get_potion() const;
         int get_x() const;
-        void set_x(int in_x);
         int get_y() const;
+        int get_id() const;
+        void set_x(int in_x);
         void set_y(int in_y);
-        int get_identifier();
-        void set_identifier(int in_identifier);
+        void set_id(int in_identifier);
         void do_attack(entity &enemy);
         bool is_dead();
         virtual void move(int in_x, int in_y);

@@ -7,6 +7,15 @@ entity::entity() : attack(1 + rand()%3), defense(1 + rand()%2) {  // attack: [1,
     health = 10;
 }
 
+// copy constructor used by avatar
+entity::entity(const entity &e) : attack(e.attack), defense(e.defense) {
+    potion = e.get_potion();
+    health = e.get_health();
+    x = e.get_x();
+    y = e.get_y();
+    id = e.get_id();
+}
+
 int entity::get_attack() const {
     return attack;
 }
@@ -39,12 +48,12 @@ void entity::set_y(int in_y) {
     y = in_y;
 }
 
-int entity::get_identifier() {
+int entity::get_id() const {
     return id;
 }
 
-void entity::set_identifier(int in_identifier) {
-    id = in_identifier;
+void entity::set_id(int in_id) {
+    id = in_id;
 }
 
 void entity::do_attack(entity &enemy) { // current entity attacks enemy

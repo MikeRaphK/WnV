@@ -7,8 +7,6 @@ class avatar : public entity {
         bool is_vampire();
         bool is_werewold();
         void stats();
-        avatar &operator=(const vampire right);
-        avatar &operator=(const werewolf right);
     private:
         bool vamp;
         bool were;

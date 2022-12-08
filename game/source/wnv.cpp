@@ -33,9 +33,15 @@ wnv::wnv(int in_x, int in_y, char race) : m(in_x, in_y), player(race) {
     }
 
 //-------------player-----------------------
-    if (player.is_vampire()) player = vampires[rand()%(x*y/15)];
-    else player = werewolfs[x*y/15];
-    m[player.get_x()][player.get_y()] = 'A';
+    int rand_x = rand()%x;
+    int rand_y = rand()%y;
+    while (m[rand_x][rand_y] != ' ') {
+        rand_x = rand()%x;
+        rand_y = rand()%y;
+    }
+    player.set_x(rand_x);
+    player.set_y(rand_y);
+    m[rand_x][rand_y] = 'A';
 //-----------------------------------------
     vampires[0].move(m);
 };

@@ -6,15 +6,6 @@ entity::entity() : attack(1 + rand()%3), defense(1 + rand()%2) {  // attack: [1,
     health = 10;
 }
 
-// copy constructor used by avatar
-entity::entity(const entity &e) : attack(e.attack), defense(e.defense) {
-    potion = e.get_potion();
-    health = e.get_health();
-    x = e.get_x();
-    y = e.get_y();
-    id = e.get_id();
-}
-
 int entity::get_attack() const {
     return attack;
 }

@@ -9,6 +9,7 @@ avatar::avatar(char race) : entity() {
         vamp = true;
         were = false;
     }
+    potion = 1;
 }
 
 bool avatar::is_vampire() {
@@ -19,28 +20,8 @@ bool avatar::is_werewold() {
     return were == true;
 }
 
-void avatar::stats() {  // prints the avatar's stats to the screen
-    cout << "Player stats: " << *this;
+void avatar::stats() {  // prints the avatar's stats to the screen (we can't overload << because it is a friend function in entity class)
+    cout << "Player stats: Potion: " << potion << " Pos: (" << x << "," << y << ")";
     if (is_vampire()) cout << " Race: Vampire" << endl;
     else cout << " Race: Werewolf" << endl;
-}
-
-avatar &avatar::operator=(const vampire right) {    // = overloading for vampires
-    potion = right.get_potion();
-    health = right.get_health();
-    x = right.get_x();
-    y = right.get_y();
-    id = right.get_id();
-
-    return *this;
-}
-
-avatar &avatar::operator=(const werewolf right) {   // = overloading for werewolves using polymorphism
-    potion = right.get_potion();
-    health = right.get_health();
-    x = right.get_x();
-    y = right.get_y();
-    id = right.get_id();
-
-    return *this;
 }

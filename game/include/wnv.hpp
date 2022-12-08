@@ -15,10 +15,12 @@ class wnv {
         vampire* get_vampires();
         werewolf* get_werewolfs();
         map get_map();
+        string get_time() const;
         friend ostream &operator<<(ostream &left, const wnv &right);
     private:
         int x;
         int y;
+        string time;
         map m;
         vampire *vampires;
         werewolf *werewolfs;

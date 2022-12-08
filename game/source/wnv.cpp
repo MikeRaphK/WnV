@@ -5,6 +5,8 @@
 wnv::wnv(int in_x, int in_y, char race) : m(in_x, in_y), player(race) {
     x = in_x;
     y = in_y;
+    if (rand()%2) time = "Day";
+    else time = "Night"; 
 //-------------vampires-----------------------    
     vampires = new vampire [x*y/15];
     int i, j, k = 0;
@@ -68,6 +70,10 @@ werewolf* wnv::get_werewolfs() {
 
 map wnv::get_map() {
     return m;
+}
+
+string wnv::get_time() const {
+    return time;
 }
 
 wnv::~wnv() {}

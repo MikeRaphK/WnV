@@ -9,14 +9,14 @@ class wnv {
     public:
         wnv(int in_x, int in_y, char race);
         ~wnv();
-        void player_stats();
         void set_vampires(vampire* array);
         void set_werewolfs(werewolf* array);
         vampire* get_vampires();
         werewolf* get_werewolfs();
         map get_map();
         string get_time() const;
-        friend ostream &operator<<(ostream &left, const wnv &right);
+        void player_move(string move);
+        void show();
     private:
         int x;
         int y;

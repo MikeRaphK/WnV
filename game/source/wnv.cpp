@@ -37,10 +37,11 @@ wnv::wnv(int in_x, int in_y, char race) : m(in_x, in_y), player(race) {
 //-------------player-----------------------
     int rand_x = rand()%x;
     int rand_y = rand()%y;
-    while (m[rand_x][rand_y] != ' ') {
+    while (m[rand_x][rand_y] != ' ') {  // find an empty space
         rand_x = rand()%x;
         rand_y = rand()%y;
     }
+    // place the player in the empty space
     player.set_x(rand_x);
     player.set_y(rand_y);
     m[rand_x][rand_y] = 'A';
@@ -48,9 +49,7 @@ wnv::wnv(int in_x, int in_y, char race) : m(in_x, in_y), player(race) {
     vampires[0].move(m);
 };
 
-void wnv::player_stats() {  // prints the player's stats to the screen
-    player.stats();
-}
+wnv::~wnv() {}
 
 void wnv::set_vampires(vampire* array) {
     vampires = array;
@@ -76,9 +75,12 @@ string wnv::get_time() const {
     return time;
 }
 
-wnv::~wnv() {}
+void wnv::player_move(string move) {    // move the player
+    player.move(move, m);
+}
 
-ostream &operator<<(ostream &left, const wnv &right) {  // << overloading
-    left << right.m;
-    return left;
+void wnv::show() {  // prints time, map and player stats
+    cout << "Time: " << time << endl;
+    cout << m;
+    player.show_stats();
 }

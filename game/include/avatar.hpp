@@ -6,7 +6,8 @@ class avatar : public entity {
         avatar(char race);
         bool is_vampire();
         bool is_werewold();
-        void stats();
+        void show_stats();
+        void move(string move, map &m);
     private:
         bool vamp;
         bool were;

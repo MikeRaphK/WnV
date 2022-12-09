@@ -16,8 +16,8 @@ void vampire::move(map &m) {
     ║ x,-y║ x,y ║ x,+y║                 
     ╠═════╬═════╬═════╣                 and to check all cells we need all possible x with all possible y
     ║+x,-y║+x,y ║+x,+y║                 so we use nested loops!
-    ╚═════╩═════╩═════╝
-    */
+    ╚═════╩═════╩═════╝                 Note: +x = x + 1, -y = y - 1, ...
+    */      
     
     int** possible_moves = new int*[9]; // a 2 sided array which saves the coords of the possble moves (8 neighbour cells and 1(not move))
     for(int i = 0; i < 9; ++i) 

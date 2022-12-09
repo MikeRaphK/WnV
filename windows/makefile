@@ -25,6 +25,7 @@ run: $(EXEC)
 	@./$(EXEC)
 
 clean:
-	@$(RM) $(EXEC) $(OBJS)
+	@del .\exec.exe
+	@del .\source\*.o
 
 .PHONY: all run clean

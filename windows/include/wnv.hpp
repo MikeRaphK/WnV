@@ -15,11 +15,13 @@ class wnv {
         werewolf* get_werewolfs();
         map get_map();
         string get_time() const;
-        void player_move(string move);
+        void player_turn();
         void show();
     private:
         int x;
         int y;
+        int vampire_count;
+        int werewolf_count;
         string time;
         map m;
         vampire *vampires;

@@ -1,10 +1,14 @@
-#include "wnv.hpp"
+#include "../include/wnv.hpp"
 #include "vampire.hpp"
 #include "werewolf.hpp"
+#include <windows.h>
+
 
 wnv::wnv(int in_x, int in_y, char race) : m(in_x, in_y), player(race) {
     x = in_x;
     y = in_y;
+    vampire_count = x*y/15;
+    werewolf_count = x*y/15;
     if (rand()%2) time = "Day";
     else time = "Night"; 
 //-------------vampires-----------------------    
@@ -75,11 +79,43 @@ string wnv::get_time() const {
     return time;
 }
 
-void wnv::player_move(string move) {    // move the player
-    player.move(move, m);
+void wnv::player_turn() {   // During their turn the player can move, wait, pause or quit
+    while (true) {
+        if (GetKeyState(VK_UP) & 0x8000) {  // if up is pressed, move up
+            player.move("up", m);
+            break;
+        }
+        if (GetKeyState(VK_DOWN) & 0x8000) { // if down is pressed, move down
+            player.move("down", m);
+            break;
+        }
+        if (GetKeyState(VK_LEFT) & 0x8000) { // if left is pressed, move left
+            player.move("left", m);
+            break;
+        }
+        if (GetKeyState(VK_RIGHT) & 0x8000) { // if right is pressed, move right
+            player.move("right", m);
+            break;
+        }
+        if (GetKeyState(VK_SPACE) & 0x8000) break; // if space is pressed, wait
+        if (GetKeyState('P') & 0x8000) { // if P is pressed, pause
+            cout << endl << "-----GAME PAUSED-----" << endl;
+            player.show_stats();
+            cout << "Number of active vampires: " << vampire_count << endl;
+            cout << "Number of active werewolves: " << werewolf_count << endl;
+            system("pause");
+            break;
+        }
+        if (GetKeyState('Q') & 0x8000) { // if Q is pressed, quit
+            cout << "Quitting..." << endl;
+            exit(0);
+        }
+    }
+    Sleep(100); // Add a 100ms delay so no accidental double-presses are registered
 }
 
 void wnv::show() {  // prints time, map and player stats
+    system("cls");
     cout << "Time: " << time << endl;
     cout << m;
     player.show_stats();

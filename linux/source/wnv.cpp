@@ -46,7 +46,6 @@ wnv::wnv(int in_x, int in_y, char race) : m(in_x, in_y), player(race) {
     player.set_y(rand_y);
     m[rand_x][rand_y] = 'A';
 //-----------------------------------------
-    vampires[0].move(m);
 };
 
 wnv::~wnv() {}

@@ -5,10 +5,6 @@ vampire::vampire() : entity() {}
 vampire::~vampire() {}
 
 void vampire::move(map &m) {
-    //cout << "Starting position:(" << x << "," << y << ")" << endl;
-   
-    //cout << "↓" << endl;
-    //--------------------------------------------------
     /*
     ╔═════╦═════╦═════╗
     ║-x,-y║-x,y ║-x,+y║                 possible values of x = x-1, x+0, x+1 (temp_x + 2)
@@ -38,19 +34,15 @@ void vampire::move(map &m) {
             }
         }
     }
-    counter--; //remove the one extra
+    //Note counter is 5 because of loop end and its ready for the not move case
+    //add manually the possibility to not move:
+    possible_moves[0][counter] = x;
+    possible_moves[1][counter] = y;
 
-  /*  cout << "Possible_moves:\n";
-    for(int i = 0 ; i <= counter ; i++) {
-        cout << "(" << possible_moves[0][i] << "," << possible_moves[1][i] << ")\t";
-    }
-    cout << endl << m;
-    cout << "The one:\n(" << possible_moves[0][the_one] << "," << possible_moves[1][the_one] << ")\n";
-    */
    
     int the_one = rand()%(counter+1);   //pick a random set of coords out of the possible ones
     m[x][y] = ' ';              
-    x = possible_moves[0][the_one];     
+    x = possible_moves[0][the_one];     //and switch 'em
     y = possible_moves[1][the_one];     
     m[x][y] = 'v';
 }       

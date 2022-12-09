@@ -38,7 +38,7 @@ void vampire::move(map &m) {
             }
         }
     }
-    counter--;
+    counter--; //remove the one extra
 
   /*  cout << "Possible_moves:\n";
     for(int i = 0 ; i <= counter ; i++) {
@@ -48,10 +48,10 @@ void vampire::move(map &m) {
     cout << "The one:\n(" << possible_moves[0][the_one] << "," << possible_moves[1][the_one] << ")\n";
     */
    
-    int the_one = rand()%(counter+1);
-    m[x][y] = ' ';
-    x = possible_moves[0][the_one];
-    y = possible_moves[1][the_one];
+    int the_one = rand()%(counter+1);   //pick a random set of coords out of the possible ones
+    m[x][y] = ' ';              
+    x = possible_moves[0][the_one];     
+    y = possible_moves[1][the_one];     
     m[x][y] = 'v';
 }       
 

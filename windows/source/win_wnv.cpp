@@ -7,6 +7,7 @@
 wnv::wnv(int in_x, int in_y, char race) : m(in_x, in_y), player(race) {
     x = in_x;
     y = in_y;
+    turn = 0;
     vampire_count = x*y/15;
     werewolf_count = x*y/15;
     if (rand()%2) time = "Day";
@@ -50,7 +51,6 @@ wnv::wnv(int in_x, int in_y, char race) : m(in_x, in_y), player(race) {
     player.set_y(rand_y);
     m[rand_x][rand_y] = 'A';
 //-----------------------------------------
-    vampires[0].move(m);
 };
 
 wnv::~wnv() {}
@@ -97,7 +97,12 @@ void wnv::player_turn() {   // During their turn the player can move, wait, paus
             player.move("right", m);
             break;
         }
-        if (GetKeyState(VK_SPACE) & 0x8000) break; // if space is pressed, wait
+        if (GetKeyState(VK_SPACE) & 0x8000) {   // if space is pressed, heal
+            if (player.is_vampire() && is_day()) player.heal(vampires, x*y/15); // heal vampires only during the day
+            else if (player.is_werewolf() && is_night()) player.heal(werewolfs, x*y/15);    // heal werewolfs only during the night
+            // if none of the above apply, player can't heal during that round and they lose a turn
+            break;
+        }
         if (GetKeyState('P') & 0x8000) { // if P is pressed, pause
             cout << endl << "-----GAME PAUSED-----" << endl;
             player.show_stats();
@@ -111,12 +116,28 @@ void wnv::player_turn() {   // During their turn the player can move, wait, paus
             exit(0);
         }
     }
-    Sleep(100); // Add a 100ms delay so no accidental double-presses are registered
+    Sleep(100); // add a 100ms delay so no accidental double-presses are registered
+
+    turn++; // raise the turn counter
+    if (turn % 3 == 0) cycle_time();    // change the time once every 3 turns
 }
 
-void wnv::show() {  // prints time, map and player stats
-    system("cls");
-    cout << "Time: " << time << endl;
+void wnv::show() {  // prints time, round, map and player stats
+    // system("cls");
+    cout << "Time: " << time <<  "   |   Turn: " << turn << endl;
     cout << m;
     player.show_stats();
+}
+
+bool wnv::is_day() {    // returns true if it is day, false otherwise
+    return time == "Day";
+}
+
+bool wnv::is_night() {  // returns true if it is night, false otherwise
+    return time == "Night";
+}
+
+void wnv::cycle_time() {    // cycle through day and night
+    if (time == "Day") time = "Night";
+    else time = "Day";
 }

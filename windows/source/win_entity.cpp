@@ -46,6 +46,11 @@ void entity::set_id(int in_id) {
     id = in_id;
 }
 
+void entity::heal() {   // increase entity's health by 1
+    health++;
+    if (health > 10) health = 10;   // don't exceed max health
+}
+
 void entity::do_attack(entity &enemy) { // current entity attacks enemy
     int damage = attack - enemy.defense;
     if (damage < 0) damage = 0;

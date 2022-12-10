@@ -16,7 +16,7 @@ bool avatar::is_vampire() {
     return vamp == true;
 }
 
-bool avatar::is_werewold() {
+bool avatar::is_werewolf() {
     return were == true;
 }
 
@@ -53,6 +53,28 @@ void avatar::move(string move, map &m) {    // moves the player in the map
     // check to see if potion is picked up and update the map
     if (m[x][y] == 'p') potion++;
     m[x][y] = 'A';
+}
+
+void avatar::heal(vampire *(&vampires), int size) { // heal for vampires
+    if (!potion) return;    // if player has no potions, return
+
+    for (int i = 0 ; i < size ; i++) {
+        vampires[i].heal(); // increase health by 1 for all vampires
+        cout << "Healed 1 health to vampire in position (" << vampires[i].get_x() << "," << vampires[i].get_y() << "). Current health: " << vampires[i].get_health() << endl; 
+    }
+    cout << endl;
+    potion--;   // player loses a potion
+}
+
+void avatar::heal(werewolf *(&werewolfs), int size) {   // heal for vampires using polymorphism
+    if (!potion) return;    // if player has no potions, return
+    
+    for (int i = 0 ; i < size ; i++) {
+        werewolfs[i].heal();    // increase health by 1 for all vampires
+        cout << "Healed 1 health to werewolf in position (" << werewolfs[i].get_x() << "," << werewolfs[i].get_y() << ")" << endl; 
+    }
+    cout << endl;
+    potion--; // player loses a potion
 }
 
 void avatar::show_stats() {  // prints the avatar's stats to the screen (we can't overload << because it is a friend function in entity class)

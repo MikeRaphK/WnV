@@ -17,6 +17,7 @@ class wnv {
         string get_time() const;
         void player_turn();
         void vampire_turn();
+        void werewolf_turn();
         void show();
         bool is_day();
         bool is_night();

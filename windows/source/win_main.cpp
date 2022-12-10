@@ -9,11 +9,12 @@ int main() {
     
     wnv game(10, 10, 'V');
 
-        // game only lets player move
+        // all that is left is to make entities interact with each other
         while (true) {
             game.show();
             game.player_turn();
             game.vampire_turn();
+            game.werewolf_turn();
         }
         cout << endl;
 

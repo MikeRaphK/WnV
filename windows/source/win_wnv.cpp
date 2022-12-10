@@ -128,6 +128,12 @@ void wnv::vampire_turn() {
     } 
 }
 
+void wnv::werewolf_turn() {
+    for (int i = 0 ; i < x*y/15 ; i++) {
+        werewolfs[i].move(m);
+    } 
+}
+
 void wnv::show() {  // prints time, round, map and player stats
     // system("cls");
     cout << "Time: " << time <<  "   |   Turn: " << turn << endl;

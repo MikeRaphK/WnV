@@ -5,10 +5,6 @@ vampire::vampire() : entity() {}
 vampire::~vampire() {}
 
 void vampire::move(map &m) {
-    cout << "Starting position:(" << x << "," << y << ")" << endl;
-   
-    cout << "↓" << endl;
-    //--------------------------------------------------
     /*
     ╔═════╦═════╦═════╗
     ║-x,-y║-x,y ║-x,+y║                 possible values of x = x-1, x+0, x+1 (temp_x + 2)
@@ -40,15 +36,7 @@ void vampire::move(map &m) {
     }
     counter--;
 
-    cout << "Possible_moves:\n";
-    for(int i = 0 ; i <= counter ; i++) {
-        cout << "(" << possible_moves[0][i] << "," << possible_moves[1][i] << ")\t";
-    }
-    cout << endl << m;
-
     int the_one = rand()%(counter+1);
-    cout << "The one:\n(" << possible_moves[0][the_one] << "," << possible_moves[1][the_one] << ")\n";
-
     m[x][y] = ' ';
     x = possible_moves[0][the_one];
     y = possible_moves[1][the_one];

@@ -13,6 +13,7 @@ int main() {
         while (true) {
             game.show();
             game.player_turn();
+            game.vampire_turn();
         }
         cout << endl;
 

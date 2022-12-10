@@ -122,6 +122,12 @@ void wnv::player_turn() {   // During their turn the player can move, wait, paus
     if (turn % 3 == 0) cycle_time();    // change the time once every 3 turns
 }
 
+void wnv::vampire_turn() {
+    for (int i = 0 ; i < x*y/15 ; i++) {
+        vampires[i].move(m);
+    } 
+}
+
 void wnv::show() {  // prints time, round, map and player stats
     // system("cls");
     cout << "Time: " << time <<  "   |   Turn: " << turn << endl;

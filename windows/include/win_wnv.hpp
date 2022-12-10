@@ -16,6 +16,7 @@ class wnv {
         map get_map();
         string get_time() const;
         void player_turn();
+        void vampire_turn();
         void show();
         bool is_day();
         bool is_night();

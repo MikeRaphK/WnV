@@ -1,5 +1,5 @@
 #pragma once
-#include "common.hpp"
+#include "win_common.hpp"
 
 class map {
     public:

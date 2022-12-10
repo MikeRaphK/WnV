@@ -1,6 +1,6 @@
 #pragma once
-#include "entity.hpp"
-#include "map.hpp"
+#include "win_entity.hpp"
+#include "win_map.hpp"
 
 class vampire : public entity {
     public:

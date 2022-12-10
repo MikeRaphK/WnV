@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "../include/wnv.hpp"
+#include "win_wnv.hpp"
 
 int main() {
     // initializers

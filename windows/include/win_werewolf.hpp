@@ -1,5 +1,5 @@
 #pragma once
-#include "entity.hpp"
+#include "win_entity.hpp"
 
 class werewolf : public entity {
     public:

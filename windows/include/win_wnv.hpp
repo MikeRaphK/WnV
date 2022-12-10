@@ -1,9 +1,9 @@
-#include "common.hpp"
-#include "map.hpp"
-#include "entity.hpp"
-#include "vampire.hpp"
-#include "werewolf.hpp"
-#include "avatar.hpp"
+#include "win_common.hpp"
+#include "win_map.hpp"
+#include "win_entity.hpp"
+#include "win_vampire.hpp"
+#include "win_werewolf.hpp"
+#include "win_avatar.hpp"
 
 class wnv {
     public:

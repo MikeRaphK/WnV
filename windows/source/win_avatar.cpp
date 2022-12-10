@@ -1,4 +1,4 @@
-#include "avatar.hpp"
+#include "win_avatar.hpp"
 
 avatar::avatar(char race) : entity() {
     if (race == 'v' || race == 'V') {
@@ -51,7 +51,7 @@ void avatar::move(string move, map &m) {    // moves the player in the map
     }
 
     // check to see if potion is picked up and update the map
-    if (m[x][y] == 'P') potion++;
+    if (m[x][y] == 'p') potion++;
     m[x][y] = 'A';
 }
 

@@ -1,6 +1,6 @@
-#include "../include/wnv.hpp"
-#include "vampire.hpp"
-#include "werewolf.hpp"
+#include "win_wnv.hpp"
+#include "win_vampire.hpp"
+#include "win_werewolf.hpp"
 #include <windows.h>
 
 

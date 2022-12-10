@@ -11,7 +11,7 @@ CXXFLAGS = -Wall -Werror -g -O0 -I$(INCLUDE)
 
 # .o and executable
 EXEC = exec
-OBJS = $(SRC)/map.o $(SRC)/main.o $(SRC)/entity.o $(SRC)/wnv.o $(SRC)/vampire.o $(SRC)/werewolf.o $(SRC)/avatar.o
+OBJS = $(SRC)/win_map.o $(SRC)/win_main.o $(SRC)/win_entity.o $(SRC)/win_wnv.o $(SRC)/win_vampire.o $(SRC)/win_werewolf.o $(SRC)/win_avatar.o
 
 all: run clean
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "common.hpp"
+#include "win_common.hpp"
 
 class entity {
     public:

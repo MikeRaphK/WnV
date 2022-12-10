@@ -1,5 +1,5 @@
-#include "vampire.hpp"
-#include "werewolf.hpp"
+#include "win_vampire.hpp"
+#include "win_werewolf.hpp"
 
 class avatar : public entity {
     public:

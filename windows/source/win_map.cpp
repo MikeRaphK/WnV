@@ -1,4 +1,4 @@
-#include "map.hpp"
+#include "win_map.hpp"
 
 map::map(int in_x, int in_y) {  // map constructor allocates memory and initializes the board 
     int i, j;
@@ -34,7 +34,7 @@ map::map(int in_x, int in_y) {  // map constructor allocates memory and initiali
     }
 
     // potion init
-    m[rand()%x][rand()%y] = 'P';
+    m[rand()%x][rand()%y] = 'p';
 
     //entity init 
     for( i = 0 ; i < (x*y/15) * 2 ; i++ ) {

@@ -22,28 +22,28 @@ bool avatar::is_werewolf() {
 
 void avatar::move(string move, map &m) {    // moves the player in the map
     if (move == "up") {
-        if (x-1 < 0 || m.is_obstacle(x-1, y) || m.is_vampire(x-1, y) || m.is_werewolf(x-1, y)) return; // if move is illegal, return
+        if (!m.in_map(x-1, y) || m.is_obstacle(x-1, y) || m.is_vampire(x-1, y) || m.is_werewolf(x-1, y)) return; // if move is illegal, return
         else {
             m[x][y] = ' ';
             x -= 1;  
         }
     }
     else if (move == "down") {
-        if (x+1 >= m.get_x() || m.is_obstacle(x+1, y) || m.is_vampire(x+1, y) || m.is_werewolf(x+1, y)) return; // if move is illegal, return
+        if (!m.in_map(x+1,y) || m.is_obstacle(x+1, y) || m.is_vampire(x+1, y) || m.is_werewolf(x+1, y)) return; // if move is illegal, return
         else {
             m[x][y] = ' ';
             x += 1;
         }
     }
     else if (move == "left") {
-        if (y-1 < 0 || m.is_obstacle(x, y-1) || m.is_vampire(x, y-1) || m.is_werewolf(x, y-1)) return; // if move is illegal, return
+        if (!m.in_map(x,y-1) || m.is_obstacle(x, y-1) || m.is_vampire(x, y-1) || m.is_werewolf(x, y-1)) return; // if move is illegal, return
         else {
             m[x][y] = ' ';
             y -= 1;
         }
     }
     else if (move == "right") {
-        if (y+1 >= m.get_y() || m.is_obstacle(x, y+1) || m.is_vampire(x, y+1) || m.is_werewolf(x, y+1)) return; // if move is illegal, return
+        if (!m.in_map(x,y+1) || m.is_obstacle(x, y+1) || m.is_vampire(x, y+1) || m.is_werewolf(x, y+1)) return; // if move is illegal, return
         else {
             m[x][y] = ' ';
             y += 1;

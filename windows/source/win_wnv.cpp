@@ -135,7 +135,7 @@ void wnv::werewolf_turn() {
 }
 
 void wnv::show() {  // prints time, round, map and player stats
-    // system("cls");
+    system("cls");
     cout << "Time: " << time <<  "   |   Turn: " << turn << endl;
     cout << m;
     player.show_stats();

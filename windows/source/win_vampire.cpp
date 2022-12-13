@@ -14,11 +14,13 @@ void vampire::move(map &m) {
     ║+x,-y║+x,y ║+x,+y║                 so we use nested loops!
     ╚═════╩═════╩═════╝
     */
-    
-    int** possible_moves = new int*[9]; // a 2 sided array which saves the coords of the possble moves (8 neighbour cells and 1(not move))
-    for(int i = 0; i < 9; ++i) 
-        possible_moves[i] = new int[2];
 
+  /*  int** possible_moves = new int*[9]; // a 2 sided array which saves the coords of the possble moves (8 neighbour cells and 1(not move))
+    for(int i = 0; i < 9; i++) 
+        possible_moves[i] = new int[2]; */
+
+    array<array<int, 9>, 2> possible_moves; //automatic array which is deleted when out of scope
+    // a 2 sided array which saves the coords of the possible moves (4 neighbour cells and 1(not move))
     int counter = 0;
     int temp_x,temp_y;
     for(int i = -1  ; i <= 1 ; i++ ) { 
@@ -41,6 +43,6 @@ void vampire::move(map &m) {
     x = possible_moves[0][the_one];
     y = possible_moves[1][the_one];
     m[x][y] = 'v';
-}       
 
-
+    return;
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include "win_common.hpp"
+#include <array>
 
 class entity {
     public:

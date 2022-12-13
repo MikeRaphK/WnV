@@ -14,9 +14,8 @@ void werewolf::move(map &m) {
     ║+x,-y║+x,y ║+x,+y║                
     ╚═════╩═════╩═════╝                 Note: +x = x + 1, -y = y - 1, ...
     */                                   
-    int** possible_moves = new int*[5]; // a 2 sided array which saves the coords of the possble moves (4 neighbour cells and 1(not move))
-    for(int i = 0; i < 9; ++i) 
-        possible_moves[i] = new int[2];
+    array<array<int, 9>, 2> possible_moves; //automatic array which is deleted when out of scope
+    // a 2 sided array which saves the coords of the possible moves (4 neighbour cells and 1(not move))
 
     int counter = 0;
     int temp_x,temp_y;
@@ -45,5 +44,5 @@ void werewolf::move(map &m) {
     y = possible_moves[1][the_one];     
     m[x][y] = 'w';
 
-
+    return;
 }

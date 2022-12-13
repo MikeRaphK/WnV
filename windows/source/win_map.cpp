@@ -105,22 +105,22 @@ ostream &operator<<(ostream &left, const map &right) {  // << overloading for ma
     }
     left << endl;
     // First row 
-    left << "    +";
+    left << "    " << char(201); // "╔"
     for (i = 0 ; i < right.y  ; i++) {
-        left << "---+";
+        left << char(205) << char(205) << char(205) << char(203); // "═══╦"
     }
-    left << "\b+" << endl << "0   "<< "| ";
+    left << "\b" << char(187) << endl << "0   "<< char(186) << " "; //"\b╗\n0   ║ "
     for (j = 0 ; j < right.y; j++)
-        left << right.m[0][j] << " | ";
+        left << right.m[0][j] << " " <<  char(186) << " "; //" ║ " 
     left << endl;
     //Box 
     for (i = 1 ; i < right.x ; i++) {
         
         // This is used to print in-between lines 
-        left << "    +";
+        left << "    " << char(204);  //"   ╠"
         for (k = 0 ; k < right.y ; k++)
-            left << "---+";
-        left << "\b+";
+            left << char(205) << char(205) << char(205) << char(206); //"═══╬"
+        left << "\b" << char(185); //"\b╣"
         left << endl;
         if (i < 10)
             left << i << "  "; //1 digit numbers 
@@ -128,17 +128,17 @@ ostream &operator<<(ostream &left, const map &right) {  // << overloading for ma
             left << i << " "; //2 digit numbers
         else
             left << i; //3 digit numbers
-        left << " | "; 
+        left << " " <<  char(186) << " "; //" ║ "
         // This is used to print the boxes 
         for (j = 0 ; j < right.y ; j++)
-            left << right.m[i][j] << " | ";
+            left << right.m[i][j] << " " <<  char(186) << " "; //" ║ "
         left << endl;
     }
     //Last line
-     left << "    +";
+     left << "    " << char(200); //"    ╚"
     for (j = 0 ; j < right.y; j++)
-        left << "---+";
-    left << "\b+" << endl;
+        left << char(205) << char(205) << char(205) << char(202); //"═══╩"
+    left << "\b" << char(188) << endl; //"\b╝\n"
     
     return left;
 }

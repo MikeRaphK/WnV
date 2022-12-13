@@ -7,7 +7,7 @@ MAKE += --silent
 
 # compiler options
 CXX = g++
-CXXFLAGS = -Wall -Werror -g -O0 -I$(INCLUDE)
+CXXFLAGS = -Wall -Werror -g -O0 -I$(INCLUDE) -std=c++11
 
 # .o and executable
 EXEC = exec

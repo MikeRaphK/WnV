@@ -153,3 +153,20 @@ void wnv::cycle_time() {    // cycle through day and night
     if (time == "Day") time = "Night";
     else time = "Day";
 }
+
+void wnv::starting_message() {
+    //---------------first line----------------
+    cout << char(201);
+    for (int i = 0 ; i < 39 ; i++)
+        cout << char(205);
+    cout << char(187) << endl;
+    //---------------middle line---------------
+    cout << char(186) << " WELCOME TO WnV GAME BY MIKE AND TONY! " << char(186) << endl;
+    //---------------last line----------------- 
+    cout << char(200);
+    for (int i = 0 ; i < 39 ; i++)
+        cout << char(205);
+    cout << char(188); 
+    //---------------input---------------------
+    cin >> x;
+}

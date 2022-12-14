@@ -6,8 +6,8 @@ avatar::avatar(char race) : entity() {
         were = false;
     }
     else {
-        vamp = true;
-        were = false;
+        vamp = false;
+        were = true;
     }
     potion = 1;
 }

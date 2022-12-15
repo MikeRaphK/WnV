@@ -44,7 +44,7 @@ int dialogue::get_y() {
 
 char dialogue::get_race() {
     char usr_race;
-    cout << "Specify the team you support\n(\"v\"/\"V\" for vampires OR \"w\"/\"W\" for werewolves: ";
+    cout << "Specify the team you support\n(\"v\"/\"V\" for vampires OR \"w\"/\"W\" for werewolves): ";
     cin >> usr_race;
     while (usr_race != 'v' && usr_race != 'V' && usr_race != 'w' && usr_race != 'W') {
         cout << "(\"v\"/\"V\" for vampires OR \"w\"/\"W\" for werewolves: ";

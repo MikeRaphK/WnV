@@ -51,6 +51,7 @@ wnv::wnv(int in_x, int in_y, char race) : m(in_x, in_y), player(race) {
     player.set_y(rand_y);
     m[rand_x][rand_y] = 'A';
 //-----------------------------------------
+    vampires[2].entity_near(m);
 };
 
 wnv::~wnv() {}
@@ -135,7 +136,7 @@ void wnv::werewolf_turn() {
 }
 
 void wnv::show() {  // prints time, round, map and player stats
-    system("cls");
+    //system("cls");
     cout << "Time: " << time <<  "   |   Turn: " << turn << endl;
     cout << m;
     player.show_stats();

@@ -1,5 +1,6 @@
 #pragma once
 #include "win_common.hpp"
+#include "win_map.hpp"
 #include <array>
 
 class entity {
@@ -20,6 +21,7 @@ class entity {
         void do_attack(entity &enemy);
         bool is_dead();
         virtual void move(int in_x, int in_y);
+        virtual void entity_near(map &m);
         friend ostream &operator<<(ostream &left, const entity &right);
     protected:
         const int attack;

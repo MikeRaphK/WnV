@@ -7,7 +7,7 @@
 
 class wnv {
     public:
-        wnv(int in_x, int in_y, char race);
+        wnv(char race, int in_y, int in_x);
         ~wnv();
         void set_vampires(vampire* array);
         void set_werewolfs(werewolf* array);

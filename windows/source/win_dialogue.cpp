@@ -22,7 +22,7 @@ void dialogue::starting_message() {
 
 int dialogue::get_x() {
     int usr_x;
-    cout << endl << "Give the x of the map: ";
+    cout << "Give the x of the map: ";
     cin >> usr_x;
     while (usr_x <= 0 || usr_x > 999) {
         cout << "Please enter a reasonable value for x: ";
@@ -33,7 +33,7 @@ int dialogue::get_x() {
 
 int dialogue::get_y() {
     int usr_y;
-    cout << endl << "Give the y of the map: ";
+    cout << "Give the y of the map: ";
     cin >> usr_y;
     while (usr_y <= 0 || usr_y > 999) {
         cout << "Please enter a reasonable value for y: ";

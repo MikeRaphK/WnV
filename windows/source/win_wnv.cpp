@@ -4,7 +4,7 @@
 #include <windows.h>
 
 
-wnv::wnv(int in_x, int in_y, char race) : m(in_x, in_y), player(race) {
+wnv::wnv(char race, int in_y, int in_x) : m(in_x, in_y), player(race) {
     x = in_x;
     y = in_y;
     turn = 0;

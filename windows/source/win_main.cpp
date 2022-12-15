@@ -9,7 +9,7 @@ int main() {
     srand(time(0));
     dialogue user;
     user.starting_message();
-    wnv game(user.get_x(), user.get_y(), user.get_race());
+    wnv game(user.get_race(), user.get_y(), user.get_x());
 
         // all that is left is to make entities interact with each other
         while (true) {

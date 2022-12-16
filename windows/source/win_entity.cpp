@@ -7,7 +7,6 @@ entity::entity() : attack(1 + rand()%3), defense(1 + rand()%2) {  // attack: [1,
     health = 10;
 }
 
-
 int entity::get_attack() const {
     return attack;
 }
@@ -48,11 +47,6 @@ void entity::set_id(int in_id) {
     id = in_id;
 }
 
-void entity::heal() {   // increase entity's health by 1
-    health++;
-    if (health > 10) health = 10;   // don't exceed max health
-}
-
 void entity::do_attack(entity &enemy) { // current entity attacks enemy
     int damage = attack - enemy.defense;
     if (damage < 0) damage = 0;
@@ -84,7 +78,8 @@ void entity::entity_near(map &m) {
         for(int j = -1 ; j <= 1 ; j++ ) { 
             temp_x = x + i; // x-1, x , x+1
             temp_y = y + j; //y-1, y, y+1
-            if (i + j != 0) {
+            //cout << "CHECKING" << "(" << temp_x << "," << temp_y << ")" << endl;
+            if (! (temp_x == x && temp_y == y) ) {
                 if (m.in_map(temp_x,temp_y)) {
                     if(m.is_vampire(temp_x,temp_y) || m.is_werewolf(temp_x,temp_y)) {
                         neighbour_cells[0][counter] = temp_x;
@@ -96,23 +91,29 @@ void entity::entity_near(map &m) {
         }
     }
     cout << "The position" <<"(" << x << "," << y << "):\n";
+    cout << " Number of entities near: " << counter << endl;
     for (int i = 0 ; i < counter ; i++) {
         if (m.is_vampire(neighbour_cells[0][i] , neighbour_cells[1][i]) ) { //if neighbour cell is vampire
             if (m.is_vampire(x,y)) 
-                cout << "heals->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
+                cout << "  heals->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
             else if (m.is_werewolf(x,y)) 
-                cout << "attacks " << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
+                cout << "  attacks->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
         }
         else if (m.is_werewolf(neighbour_cells[0][i] , neighbour_cells[1][i]) ) {
             if (m.is_vampire(x,y)) 
-                cout << "attacks->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
+                cout << "  attacks->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
             else if (m.is_werewolf(x,y)) 
-                cout << "heals->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
+                cout << "  heals->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
         }
-    } 
+    }
 }
 
 ostream &operator<<(ostream &left, const entity &right) {  // << overloading
     left << "Attack: " << right.attack << " Defense: " << right.defense << " Health: " << right.health << " Potion: " << right.potion << " Pos: (" << right.x << "," << right.y << ")";
     return left;
+}
+
+void entity::heal() {   // increase entity's health by 1
+    health++;
+    if (health > 10) health = 10;   // don't exceed max health
 }

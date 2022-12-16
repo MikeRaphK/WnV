@@ -22,7 +22,7 @@ class wnv {
         bool is_day();
         bool is_night();
         void cycle_time();
-        void starting_message();
+        void interactions();
     private:
         int x;
         int y;

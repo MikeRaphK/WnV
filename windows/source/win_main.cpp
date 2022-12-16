@@ -17,6 +17,7 @@ int main() {
             game.player_turn();
             game.vampire_turn();
             game.werewolf_turn();
+            game.interactions();
         }
         cout << endl;
 

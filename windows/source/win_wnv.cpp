@@ -51,7 +51,6 @@ wnv::wnv(char race, int in_y, int in_x) : m(in_x, in_y), player(race) {
     player.set_y(rand_y);
     m[rand_x][rand_y] = 'A';
 //-----------------------------------------
-    vampires[2].entity_near(m);
 };
 
 wnv::~wnv() {}
@@ -125,14 +124,23 @@ void wnv::player_turn() {   // During their turn the player can move, wait, paus
 
 void wnv::vampire_turn() {
     for (int i = 0 ; i < x*y/15 ; i++) {
-        vampires[i].move(m);
+        if ( !(vampires[i].is_dead()) )
+            vampires[i].move(m);
     } 
 }
 
 void wnv::werewolf_turn() {
     for (int i = 0 ; i < x*y/15 ; i++) {
-        werewolfs[i].move(m);
+        if ( !(werewolfs[i].is_dead()) )
+            werewolfs[i].move(m);
     } 
+}
+
+void wnv::interactions() {
+    for (int i = 0 ; i < x*y/15 ; i++) {
+        if ( !(vampires[i].is_dead()) )
+            vampires[i].entity_near(m);
+    }
 }
 
 void wnv::show() {  // prints time, round, map and player stats

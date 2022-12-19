@@ -75,7 +75,7 @@ void avatar::heal(werewolf *(&werewolfs), int size) {   // heal for werewolfs us
     for (int i = 0 ; i < size ; i++) {
         if (werewolfs[i].get_x() >= 0) {
             werewolfs[i].heal();    // increase health by 1 for all werewolfs
-            cout << "Healed 1 health to werewolf in position (" << werewolfs[i].get_x() << "," << werewolfs[i].get_y() << ")" << endl; 
+            cout << "Healed 1 health to werewolf in position (" << werewolfs[i].get_x() << "," << werewolfs[i].get_y() << "). Current health: " << werewolfs[i].get_health() << endl; 
         }
     }
     system("pause");

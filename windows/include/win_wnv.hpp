@@ -26,6 +26,7 @@ class wnv {
         void entity_near(int id, char type);
         int coords_to_id(int in_x, int in_y, char type);
         bool is_game_finished();
+        void result();
     private:
         int x;
         int y;

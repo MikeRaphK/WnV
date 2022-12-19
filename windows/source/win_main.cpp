@@ -18,11 +18,13 @@ int main() {
             game.vampire_turn();
             game.werewolf_turn();
             game.interactions();
-            if (game.is_game_finished())
+            if (game.is_game_finished()) {
+                game.result();
                 break;
+            }
         }
         
-        cout << endl;
+        user.closing_message();
 
     return 0;
 }

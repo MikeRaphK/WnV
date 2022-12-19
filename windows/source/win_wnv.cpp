@@ -166,16 +166,16 @@ void wnv::interactions() {
     //check for every vampire if its dead 
     for (int i = 0 ; i < x*y/15 ; i++) {
         if ( vampires[i].is_dead() && vampires[i].get_x() >= 0 ) { //if it just died (dead but not already dead)
-            cout << "Vampire with id: " << vampires[i].get_id() << " died!\n";
-            Sleep(1000);
+            cout << "Vampire previously at (" << vampires[i].get_x() << "," << vampires[i].get_y() << ") is now dead!\n";
+            Sleep(1111);
             m.clear_cell(vampires[i].get_x(), vampires[i].get_y());
             vampires[i].set_x(-1);
             vampire_count--;
         }
         
         if ( werewolfs[i].is_dead() && werewolfs[i].get_x() >= 0 ) { //if it just died (dead but not already dead)
-            cout << "Werewolf with id: " << werewolfs[i].get_id() << " died!\n";
-            Sleep(1000);
+            cout << "Werewolf previously at (" << werewolfs[i].get_x() << "," << werewolfs[i].get_y() << ") is now dead!\n";
+            Sleep(1111);
             m.clear_cell(werewolfs[i].get_x(), werewolfs[i].get_y());
             werewolfs[i].set_x(-1);
             werewolf_count--;
@@ -297,4 +297,76 @@ bool wnv::is_game_finished() {
         return true;
     else 
         return false;
+}
+
+void wnv::result() {
+    system("cls");
+     if (vampire_count == 0 ) {
+        if (player.is_werewolf()) {
+            //---------------first line----------------
+            cout << char(201);
+            for (int i = 0 ; i < 34 ; i++)
+                cout << char(205);
+            cout << char(187) << endl;
+            //---------------middle line---------------
+            cout << char(186) << "               YOU WON!           "<< char(186) << endl;
+            cout << char(186) << "           With: " << player.get_potion() << " potions        " << char(186) << endl;
+            cout << char(186) << " The werewolves are now victorious" << char(186) << endl;
+            //---------------last line----------------- 
+            cout << char(200);
+            for (int i = 0 ; i < 34 ; i++)
+                cout << char(205);
+            cout << char(188) << endl;
+        }
+        else { 
+            //---------------first line----------------
+            cout << char(201);
+            for (int i = 0 ; i < 34 ; i++)
+                cout << char(205);
+            cout << char(187) << endl;
+            //---------------middle line---------------
+            cout << char(186) << "              YOU LOST!           "<< char(186) << endl;
+            cout << char(186) << "           With: " << player.get_potion() << " potions        " << char(186) << endl;
+            cout << char(186) << " The vampires are dissapointed... " << char(186) << endl;
+            //---------------last line----------------- 
+            cout << char(200);
+            for (int i = 0 ; i < 34 ; i++)
+                cout << char(205);
+            cout << char(188) << endl;
+        } 
+    } else if (werewolf_count == 0) { 
+        if (player.is_vampire()) {
+            //---------------first line----------------
+            cout << char(201);
+            for (int i = 0 ; i < 34 ; i++)
+                cout << char(205);
+            cout << char(187) << endl;
+            //---------------middle line---------------
+            cout << char(186) << "               YOU WON!           "<< char(186) << endl;
+            cout << char(186) << "           With: " << player.get_potion() << " potions        " << char(186) << endl;
+            cout << char(186) << "  The vampires are now victorious " << char(186) << endl;
+            //---------------last line----------------- 
+            cout << char(200);
+            for (int i = 0 ; i < 34 ; i++)
+                cout << char(205);
+            cout << char(188) << endl;
+        } else { 
+             //---------------first line----------------
+            cout << char(201);
+            for (int i = 0 ; i < 34 ; i++)
+                cout << char(205);
+            cout << char(187) << endl;
+            //---------------middle line---------------
+            cout << char(186) << "              YOU LOST!           "<< char(186) << endl;
+            cout << char(186) << "           With: " << player.get_potion() << " potions        " << char(186) << endl;
+            cout << char(186) << "The werewolves are dissapointed..." << char(186) << endl;
+            //---------------last line----------------- 
+            cout << char(200);
+            for (int i = 0 ; i < 34 ; i++)
+                cout << char(205);
+            cout << char(188) << endl;
+        }
+    }
+    cout << endl;  
+    system("pause");
 }

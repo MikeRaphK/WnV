@@ -1,6 +1,7 @@
 #include "win_wnv.hpp"
 #include "win_vampire.hpp"
 #include "win_werewolf.hpp"
+#include "win_common.hpp"
 #include <windows.h>
 
 
@@ -98,13 +99,30 @@ void wnv::player_turn() {   // During their turn the player can move, wait, paus
             break;
         }
         if (GetKeyState(VK_SPACE) & 0x8000) {   // if space is pressed, heal
-            if (player.is_vampire() && is_day()) player.heal(vampires, x*y/15); // heal vampires only during the day
-            else if (player.is_werewolf() && is_night()) player.heal(werewolfs, x*y/15);    // heal werewolfs only during the night
-            // if none of the above apply, player can't heal during that round and they lose a turn
-            break;
+            if (player.get_potion() > 0 ) {
+                if (player.is_vampire() && is_day()) {
+                    player.heal(vampires, x*y/15); // heal vampires only during the day
+                } 
+                else if (player.is_werewolf() && is_night()) {
+                    player.heal(werewolfs, x*y/15);    // heal werewolfs only during the night
+                }
+                // if none of the above apply, player can't heal during that round and they lose a turn
+                break;
+            }
         }
         if (GetKeyState('P') & 0x8000) { // if P is pressed, pause
-            cout << endl << "-----GAME PAUSED-----" << endl;
+            //---------------first line----------------
+            cout << char(201);
+            for (int i = 0 ; i < 19 ; i++)
+                cout << char(205);
+            cout << char(187) << endl;
+            //---------------middle line---------------
+            cout << char(186) << "    GAME PAUSED    " << char(186) << endl;
+             //---------------last line----------------- 
+            cout << char(200); 
+            for (int i = 0 ; i < 19 ; i++)
+                cout << char(205);
+            cout << char(188) << endl;
             player.show_stats();
             cout << "Number of active vampires: " << vampire_count << endl;
             cout << "Number of active werewolves: " << werewolf_count << endl;
@@ -139,9 +157,135 @@ void wnv::werewolf_turn() {
 void wnv::interactions() {
     for (int i = 0 ; i < x*y/15 ; i++) {
         if ( !(vampires[i].is_dead()) )
-            vampires[i].entity_near(m);
+            entity_near(vampires[i].get_id(), 'v');
     }
+    for (int i = 0 ; i < x*y/15 ; i++) {
+        if ( !(werewolfs[i].is_dead()) )
+            entity_near(werewolfs[i].get_id(), 'w');
+    }
+    //check for every vampire if its dead 
+    for (int i = 0 ; i < x*y/15 ; i++) {
+        if ( vampires[i].is_dead() && vampires[i].get_x() >= 0 ) { //if it just died (dead but not already dead)
+            cout << "Vampire with id: " << vampires[i].get_id() << " died!\n";
+            m.clear_cell(vampires[i].get_x(), vampires[i].get_y());
+            vampires[i].set_x(-1);
+            vampire_count--;
+        }
+        
+        if ( werewolfs[i].is_dead() && werewolfs[i].get_x() >= 0 ) { //if it just died (dead but not already dead)
+                cout << "Werewolf with id: " << werewolfs[i].get_id() << " died!\n";
+                m.clear_cell(werewolfs[i].get_x(), werewolfs[i].get_y());
+                werewolfs[i].set_x(-1);
+                werewolf_count--;
+        }
+    }
+
 }
+
+void wnv::entity_near(int id, char type) {
+    int entity_x, entity_y;
+    if ( type == 'v') {
+        entity_x = vampires[id].get_x();
+        entity_y = vampires[id].get_y();
+    } else if (type == 'w'){
+        entity_x = werewolfs[id].get_x();
+        entity_y = werewolfs[id].get_y();
+    } else {
+        cout << "ERROR:wrong type input in entity near\n"; 
+        return;
+    }
+    
+    /*
+    ╔═════╦═════╦═════╗
+    ║-x,-y║-x,y ║-x,+y║                 possible values of x = x-1, x+0, x+1 (temp_x + 2)
+    ╠═════╬═════╬═════╣                 possible values of y = y-1, y+0, y+1                                        
+    ║ x,-y║ x,y ║ x,+y║                 
+    ╠═════╬═════╬═════╣                 and to check all cells we need all possible x with all possible y
+    ║+x,-y║+x,y ║+x,+y║                 so we use nested loops!
+    ╚═════╩═════╩═════╝
+    */
+
+    array<array<int, 7>, 2> neighbour_cells; //automatic array which is deleted when out of scope
+    // a 2 sided array which saves the coords of the surrounding cells (8 neighbour cells)
+    int counter = 0;
+    int temp_x,temp_y;
+    for(int i = -1  ; i <= 1 ; i++ ) { 
+        for(int j = -1 ; j <= 1 ; j++ ) { 
+            temp_x = entity_x + i; // x-1, x , x+1
+            temp_y = entity_y + j; //y-1, y, y+1
+            //cout << "CHECKING" << "(" << temp_x << "," << temp_y << ")" << endl;
+            if (! (temp_x == entity_x && temp_y == entity_y) ) {
+                if (m.in_map(temp_x,temp_y)) {
+                    if(m.is_vampire(temp_x,temp_y) || m.is_werewolf(temp_x,temp_y)) {
+                        neighbour_cells[0][counter] = temp_x;
+                        neighbour_cells[1][counter] = temp_y;
+                        counter++;  
+                    }
+                }
+            }
+        }
+    }
+
+    for (int i = 0 ; i < counter ; i++) { //for every neighbour entity
+        if (m.is_vampire(neighbour_cells[0][i] , neighbour_cells[1][i]) ) { //if neighbour cell is vampire
+            if (m.is_vampire(entity_x,entity_y)) { //if the current position is vampire->heal
+                //conditionally heal the teammate
+                vampires[coords_to_id(entity_x , entity_y, 'v')].do_heal(vampires[ coords_to_id(neighbour_cells[0][i], neighbour_cells[1][i], 'v') ]  );
+                //print action
+                //cout <<"(" << entity_x << "," << entity_y << ")" << "tries to heal->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
+            }
+            else if (m.is_werewolf(entity_x, entity_y)) { //if the current position is werewolfs->attack
+                //current attacks conditionally the enemy 
+                werewolfs[coords_to_id(entity_x , entity_y, 'w')].do_attack(vampires[coords_to_id(neighbour_cells[0][i] , neighbour_cells[1][i], 'v')]);
+                //print action
+                //cout <<"(" << entity_x << "," << entity_y << ")" << "tries to attacks->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
+            }
+        }
+        else if (m.is_werewolf(neighbour_cells[0][i] , neighbour_cells[1][i]) ) { //if neighbour cell is werewolf
+            if (m.is_vampire(entity_x, entity_y)) { //if the current position is vampire->attack
+                //current attacks conditionally the enemy 
+                vampires[coords_to_id(entity_x , entity_y, 'v')].do_attack(werewolfs[coords_to_id(neighbour_cells[0][i] , neighbour_cells[1][i], 'w')]);
+                //print action
+                //cout <<"(" << entity_x << "," << entity_y << ")" << "tries to attacks->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
+
+            }
+            else if (m.is_werewolf(entity_x, entity_y)) { //if the current position is werewolf->heal
+                 //conditionally heal the teammate
+                werewolfs[coords_to_id(entity_x , entity_y, 'w')].do_heal(werewolfs[ coords_to_id(neighbour_cells[0][i], neighbour_cells[1][i], 'w') ]  );
+                //print action
+                //cout <<"(" << entity_x << "," << entity_y << ")" << "tries to heal->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
+            }
+        }
+    }
+
+
+
+}
+
+bool wnv::fifty_fifty() {
+    int chance = rand() % 2;
+    if (chance % 2 == 0)
+        return true;
+    else 
+        return false;
+}   
+
+int wnv::coords_to_id(int in_x, int in_y, char type) {
+    if ( type == 'v') {
+        for(int i = 0 ; i < x*y/15 ; i++ )
+            if (in_x == vampires[i].get_x() && in_y == vampires[i].get_y() )
+                return vampires[i].get_id();
+    } else if (type == 'w'){
+        for(int i = 0 ; i < x*y/15 ; i++ )
+            if (in_x == werewolfs[i].get_x() && in_y == werewolfs[i].get_y() )
+                return werewolfs[i].get_id();
+    } else {
+        cout << "ERROR:wrong type input in coords to id\n"; 
+        return -1;
+    }
+    return -1;
+}
+
 
 void wnv::show() {  // prints time, round, map and player stats
     //system("cls");

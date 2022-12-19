@@ -18,11 +18,10 @@ class entity {
         void set_y(int in_y);
         void set_id(int in_id);
         void heal();
-        void get_healed();
+        void do_heal(entity &enemy);
         void do_attack(entity &enemy);
         bool is_dead();
         virtual void move(int in_x, int in_y);
-        virtual void entity_near(map &m);
         friend ostream &operator<<(ostream &left, const entity &right);
     protected:
         const int attack;

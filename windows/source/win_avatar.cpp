@@ -56,22 +56,26 @@ void avatar::move(string move, map &m) {    // moves the player in the map
 }
 
 void avatar::heal(vampire *(&vampires), int size) { // heal for vampires
-    if (!potion) return;    // if player has no potions, return
+    if (potion <= 0) return;    // if player has no potions, return
 
     for (int i = 0 ; i < size ; i++) {
-        vampires[i].heal(); // increase health by 1 for all vampires
-        cout << "Healed 1 health to vampire in position (" << vampires[i].get_x() << "," << vampires[i].get_y() << "). Current health: " << vampires[i].get_health() << endl; 
+        if (vampires[i].get_x() >= 0) {
+            vampires[i].heal(); // increase health by 1 for all vampires
+            cout << "Healed 1 health to vampire in position (" << vampires[i].get_x() << "," << vampires[i].get_y() << "). Current health: " << vampires[i].get_health() << endl; 
+        }
     }
     cout << endl;
     potion--;   // player loses a potion
 }
 
-void avatar::heal(werewolf *(&werewolfs), int size) {   // heal for vampires using polymorphism
+void avatar::heal(werewolf *(&werewolfs), int size) {   // heal for werewolfs using polymorphism
     if (!potion) return;    // if player has no potions, return
     
     for (int i = 0 ; i < size ; i++) {
-        werewolfs[i].heal();    // increase health by 1 for all vampires
-        cout << "Healed 1 health to werewolf in position (" << werewolfs[i].get_x() << "," << werewolfs[i].get_y() << ")" << endl; 
+        if (werewolfs[i].get_x() >= 0) {
+            werewolfs[i].heal();    // increase health by 1 for all werewolfs
+            cout << "Healed 1 health to werewolf in position (" << werewolfs[i].get_x() << "," << werewolfs[i].get_y() << ")" << endl; 
+        }
     }
     cout << endl;
     potion--; // player loses a potion

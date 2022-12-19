@@ -91,6 +91,10 @@ bool map::in_map(int in_x, int in_y) {
     } 
 }
 
+void map::clear_cell(int in_x, int in_y) {
+    m[in_x][in_y] = ' ';
+}
+
 ostream &operator<<(ostream &left, const map &right) {  // << overloading for map
     int i, j, k;
     //top row of numbers 

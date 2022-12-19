@@ -59,8 +59,8 @@ void entity::do_heal(entity &teammate) {
         if (potion > 0 && teammate.health < 10) { //if current has potions and teammate is not full health
             potion--;
             teammate.health++;
-            cout << "(" << x << "," << y << ") heals->(" << teammate.x << "," << teammate.y << ")\n";
-            cout << "   (" << teammate.x << "," << teammate.y << ") new health is: " << teammate.health << endl;
+          //  cout << "(" << x << "," << y << ") heals->(" << teammate.x << "," << teammate.y << ")\n";
+          //  cout << "   (" << teammate.x << "," << teammate.y << ") new health is: " << teammate.health << endl;
         }
     }
     return;
@@ -71,8 +71,8 @@ void entity::do_attack(entity &enemy) { // current entity attacks enemy
     if (damage < 0) damage = 0;
     enemy.health -= damage;
     if (damage > 0 ) {
-        cout << "(" << x << "," << y << ") attacks->(" << enemy.x << "," << enemy.y << ")\n";
-        cout << "   (" << enemy.x << "," << enemy.y << ") new health is: " << enemy.health << endl;
+       // cout << "(" << x << "," << y << ") attacks->(" << enemy.x << "," << enemy.y << ")\n";
+       // cout << "   (" << enemy.x << "," << enemy.y << ") new health is: " << enemy.health << endl;
     }
     
 }

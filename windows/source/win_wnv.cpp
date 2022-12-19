@@ -167,16 +167,18 @@ void wnv::interactions() {
     for (int i = 0 ; i < x*y/15 ; i++) {
         if ( vampires[i].is_dead() && vampires[i].get_x() >= 0 ) { //if it just died (dead but not already dead)
             cout << "Vampire with id: " << vampires[i].get_id() << " died!\n";
+            Sleep(1000);
             m.clear_cell(vampires[i].get_x(), vampires[i].get_y());
             vampires[i].set_x(-1);
             vampire_count--;
         }
         
         if ( werewolfs[i].is_dead() && werewolfs[i].get_x() >= 0 ) { //if it just died (dead but not already dead)
-                cout << "Werewolf with id: " << werewolfs[i].get_id() << " died!\n";
-                m.clear_cell(werewolfs[i].get_x(), werewolfs[i].get_y());
-                werewolfs[i].set_x(-1);
-                werewolf_count--;
+            cout << "Werewolf with id: " << werewolfs[i].get_id() << " died!\n";
+            Sleep(1000);
+            m.clear_cell(werewolfs[i].get_x(), werewolfs[i].get_y());
+            werewolfs[i].set_x(-1);
+            werewolf_count--;
         }
     }
 
@@ -231,29 +233,20 @@ void wnv::entity_near(int id, char type) {
             if (m.is_vampire(entity_x,entity_y)) { //if the current position is vampire->heal
                 //conditionally heal the teammate
                 vampires[coords_to_id(entity_x , entity_y, 'v')].do_heal(vampires[ coords_to_id(neighbour_cells[0][i], neighbour_cells[1][i], 'v') ]  );
-                //print action
-                //cout <<"(" << entity_x << "," << entity_y << ")" << "tries to heal->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
             }
             else if (m.is_werewolf(entity_x, entity_y)) { //if the current position is werewolfs->attack
                 //current attacks conditionally the enemy 
                 werewolfs[coords_to_id(entity_x , entity_y, 'w')].do_attack(vampires[coords_to_id(neighbour_cells[0][i] , neighbour_cells[1][i], 'v')]);
-                //print action
-                //cout <<"(" << entity_x << "," << entity_y << ")" << "tries to attacks->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
             }
         }
         else if (m.is_werewolf(neighbour_cells[0][i] , neighbour_cells[1][i]) ) { //if neighbour cell is werewolf
             if (m.is_vampire(entity_x, entity_y)) { //if the current position is vampire->attack
                 //current attacks conditionally the enemy 
                 vampires[coords_to_id(entity_x , entity_y, 'v')].do_attack(werewolfs[coords_to_id(neighbour_cells[0][i] , neighbour_cells[1][i], 'w')]);
-                //print action
-                //cout <<"(" << entity_x << "," << entity_y << ")" << "tries to attacks->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
-
             }
             else if (m.is_werewolf(entity_x, entity_y)) { //if the current position is werewolf->heal
                  //conditionally heal the teammate
                 werewolfs[coords_to_id(entity_x , entity_y, 'w')].do_heal(werewolfs[ coords_to_id(neighbour_cells[0][i], neighbour_cells[1][i], 'w') ]  );
-                //print action
-                //cout <<"(" << entity_x << "," << entity_y << ")" << "tries to heal->" << "(" << neighbour_cells[0][i] << "," << neighbour_cells[1][i] << ")" << endl;
             }
         }
     }
@@ -261,14 +254,6 @@ void wnv::entity_near(int id, char type) {
 
 
 }
-
-bool wnv::fifty_fifty() {
-    int chance = rand() % 2;
-    if (chance % 2 == 0)
-        return true;
-    else 
-        return false;
-}   
 
 int wnv::coords_to_id(int in_x, int in_y, char type) {
     if ( type == 'v') {
@@ -288,7 +273,7 @@ int wnv::coords_to_id(int in_x, int in_y, char type) {
 
 
 void wnv::show() {  // prints time, round, map and player stats
-    //system("cls");
+    system("cls");
     cout << "Time: " << time <<  "   |   Turn: " << turn << endl;
     cout << m;
     player.show_stats();
@@ -305,4 +290,11 @@ bool wnv::is_night() {  // returns true if it is night, false otherwise
 void wnv::cycle_time() {    // cycle through day and night
     if (time == "Day") time = "Night";
     else time = "Day";
+}
+
+bool wnv::is_game_finished() {
+    if (vampire_count == 0 || werewolf_count == 0)
+        return true;
+    else 
+        return false;
 }

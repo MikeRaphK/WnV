@@ -6,6 +6,7 @@ dialogue::~dialogue() {}
 
 
 void dialogue::starting_message() {
+    system("cls");
     //---------------first line----------------
     cout << char(201);
     for (int i = 0 ; i < 39 ; i++)

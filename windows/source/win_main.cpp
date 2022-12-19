@@ -18,7 +18,10 @@ int main() {
             game.vampire_turn();
             game.werewolf_turn();
             game.interactions();
+            if (game.is_game_finished())
+                break;
         }
+        
         cout << endl;
 
     return 0;

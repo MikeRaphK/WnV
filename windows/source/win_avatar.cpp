@@ -64,6 +64,7 @@ void avatar::heal(vampire *(&vampires), int size) { // heal for vampires
             cout << "Healed 1 health to vampire in position (" << vampires[i].get_x() << "," << vampires[i].get_y() << "). Current health: " << vampires[i].get_health() << endl; 
         }
     }
+    system("pause");
     cout << endl;
     potion--;   // player loses a potion
 }
@@ -77,6 +78,7 @@ void avatar::heal(werewolf *(&werewolfs), int size) {   // heal for werewolfs us
             cout << "Healed 1 health to werewolf in position (" << werewolfs[i].get_x() << "," << werewolfs[i].get_y() << ")" << endl; 
         }
     }
+    system("pause");
     cout << endl;
     potion--; // player loses a potion
 }

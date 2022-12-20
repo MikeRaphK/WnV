@@ -11,20 +11,15 @@ int main() {
     user.starting_message();
     wnv game(user.get_race(), user.get_y(), user.get_x());
 
-        // all that is left is to make entities interact with each other
-        while (true) {
-            game.show();
-            game.player_turn();
-            game.vampire_turn();
-            game.werewolf_turn();
-            game.interactions();
-            if (game.is_game_finished()) {
-                game.result();
-                break;
-            }
-        }
-        
-        user.closing_message();
+    while (!game.is_game_finished()) {
+        game.show();
+        game.player_turn();
+        game.vampire_turn();
+        game.werewolf_turn();
+        game.interactions();
+    }
+    game.result();
+    user.closing_message();
 
     return 0;
 }

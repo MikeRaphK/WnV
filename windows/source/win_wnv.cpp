@@ -167,7 +167,7 @@ void wnv::interactions() {
     for (int i = 0 ; i < x*y/15 ; i++) {
         if ( vampires[i].is_dead() && vampires[i].get_x() >= 0 ) { //if it just died (dead but not already dead)
             cout << "Vampire previously at (" << vampires[i].get_x() << "," << vampires[i].get_y() << ") is now dead!\n";
-            Sleep(1111);
+            Sleep(1500);
             m.clear_cell(vampires[i].get_x(), vampires[i].get_y());
             vampires[i].set_x(-1);
             vampire_count--;
@@ -175,7 +175,7 @@ void wnv::interactions() {
         
         if ( werewolfs[i].is_dead() && werewolfs[i].get_x() >= 0 ) { //if it just died (dead but not already dead)
             cout << "Werewolf previously at (" << werewolfs[i].get_x() << "," << werewolfs[i].get_y() << ") is now dead!\n";
-            Sleep(1111);
+            Sleep(1500);
             m.clear_cell(werewolfs[i].get_x(), werewolfs[i].get_y());
             werewolfs[i].set_x(-1);
             werewolf_count--;

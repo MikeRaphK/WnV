@@ -1,4 +1,4 @@
-#include "win_werewolf.hpp"
+#include "werewolf.hpp"
 
 werewolf::werewolf() : entity() {}
 

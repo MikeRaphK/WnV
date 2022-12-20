@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "win_wnv.hpp"
-#include "win_dialogue.hpp"
+#include "wnv.hpp"
+#include "dialogue.hpp"
 
 int main() {
     // initializers

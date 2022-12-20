@@ -1,4 +1,4 @@
-#include "win_avatar.hpp"
+#include "avatar.hpp"
 
 avatar::avatar(char race) : entity() {
     if (race == 'v' || race == 'V') {

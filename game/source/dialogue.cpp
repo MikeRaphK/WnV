@@ -1,4 +1,4 @@
-#include "win_dialogue.hpp"
+#include "dialogue.hpp"
 
 dialogue::dialogue() {}
 

@@ -1,4 +1,4 @@
-#include "win_common.hpp"
+#include "common.hpp"
 
 class dialogue {
 public:

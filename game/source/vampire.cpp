@@ -1,4 +1,4 @@
-#include "win_vampire.hpp"
+#include "vampire.hpp"
 
 vampire::vampire() : entity() {}
 

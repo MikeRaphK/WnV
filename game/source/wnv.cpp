@@ -1,7 +1,7 @@
-#include "win_wnv.hpp"
-#include "win_vampire.hpp"
-#include "win_werewolf.hpp"
-#include "win_common.hpp"
+#include "wnv.hpp"
+#include "vampire.hpp"
+#include "werewolf.hpp"
+#include "common.hpp"
 #include <windows.h>
 
 

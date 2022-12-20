@@ -1,4 +1,4 @@
-#include "win_map.hpp"
+#include "map.hpp"
 
 map::map(int in_x, int in_y) {  // map constructor allocates memory and initializes the board 
     int i, j;

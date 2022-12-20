@@ -1,6 +1,6 @@
 #pragma once
-#include "win_common.hpp"
-#include "win_map.hpp"
+#include "common.hpp"
+#include "map.hpp"
 #include <array>
 
 class entity {

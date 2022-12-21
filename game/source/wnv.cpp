@@ -4,8 +4,8 @@
 #include "common.hpp"
 #include <windows.h>
 
-
-wnv::wnv(char race, int in_y, int in_x) : m(in_x, in_y), player(race) {
+wnv::wnv(char race, int in_y, int in_x) : m(in_x, in_y), player(race) { // game constructor
+// variable init
     x = in_x;
     y = in_y;
     turn = 0;
@@ -13,7 +13,8 @@ wnv::wnv(char race, int in_y, int in_x) : m(in_x, in_y), player(race) {
     werewolf_count = x*y/15;
     if (rand()%2) time = "Day";
     else time = "Night"; 
-//-------------vampires-----------------------    
+
+//-------------vampires init-----------------------    
     vampires = new vampire [x*y/15];
     int i, j, k = 0;
     for (i = 0 ; i < x ; i++) {
@@ -26,7 +27,7 @@ wnv::wnv(char race, int in_y, int in_x) : m(in_x, in_y), player(race) {
             }
         }
     }
-//-------------werewolfs-----------------------
+//-------------werewolfs init-----------------------
     k = 0;
     werewolfs = new werewolf [x*y/15];
     for (i = 0 ; i < x ; i++) {
@@ -40,7 +41,7 @@ wnv::wnv(char race, int in_y, int in_x) : m(in_x, in_y), player(race) {
         }
     }
 
-//-------------player-----------------------
+//-------------player init-----------------------
     int rand_x = rand()%x;
     int rand_y = rand()%y;
     while (m[rand_x][rand_y] != ' ') {  // find an empty space
@@ -54,7 +55,7 @@ wnv::wnv(char race, int in_y, int in_x) : m(in_x, in_y), player(race) {
 //-----------------------------------------
 };
 
-wnv::~wnv() {
+wnv::~wnv() {   // wnv destructor frees the allocated memory
     delete [] vampires;
     delete [] werewolfs;
 }
@@ -119,21 +120,21 @@ void wnv::player_turn() {   // During their turn the player can move, wait, paus
     if (turn % 3 == 0) cycle_time();    // change the time once every 3 turns
 }
 
-void wnv::vampire_turn() {
+void wnv::vampire_turn() {  // move every alive vampire
     for (int i = 0 ; i < x*y/15 ; i++) {
         if ( !(vampires[i].is_dead()) )
             vampires[i].move(m);
     } 
 }
 
-void wnv::werewolf_turn() {
+void wnv::werewolf_turn() { // move every alive werewolf
     for (int i = 0 ; i < x*y/15 ; i++) {
         if ( !(werewolfs[i].is_dead()) )
             werewolfs[i].move(m);
     } 
 }
 
-void wnv::interactions() {
+void wnv::interactions() {  // do interactions between ally and enemy entities
     for (int i = 0 ; i < x*y/15 ; i++) {
         if ( !(vampires[i].is_dead()) )
             entity_near(vampires[i].get_id(), 'v');
@@ -163,7 +164,7 @@ void wnv::interactions() {
 
 }
 
-void wnv::entity_near(int id, char type) {
+void wnv::entity_near(int id, char type) {  // creates a dynamic array with all nearby entities
     int entity_x, entity_y;
     if ( type == 'v') {
         entity_x = vampires[id].get_x();
@@ -234,7 +235,7 @@ void wnv::entity_near(int id, char type) {
 
 }
 
-int wnv::coords_to_id(int in_x, int in_y, char type) {
+int wnv::coords_to_id(int in_x, int in_y, char type) { // translate map coordinates to id
     if ( type == 'v') {
         for(int i = 0 ; i < x*y/15 ; i++ )
             if (in_x == vampires[i].get_x() && in_y == vampires[i].get_y() )
@@ -271,14 +272,14 @@ void wnv::cycle_time() {    // cycle through day and night
     else time = "Day";
 }
 
-bool wnv::is_game_finished() {
+bool wnv::is_game_finished() {  // checks if the game is finished
     if (vampire_count == 0 || werewolf_count == 0)
         return true;
     else 
         return false;
 }
 
-void wnv::result() {
+void wnv::result() {    // prints results
     system("cls");
      if (vampire_count == 0 ) {
         if (player.is_werewolf()) {

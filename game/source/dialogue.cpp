@@ -1,6 +1,6 @@
 #include "dialogue.hpp"
 
-void dialogue::starting_message() {
+void dialogue::starting_message() { // starting message
     system("cls");
     //---------------first line----------------
     cout << char(201);
@@ -18,7 +18,7 @@ void dialogue::starting_message() {
     cout << char(188) << endl << endl; 
 }
 
-int dialogue::get_x() {
+int dialogue::get_x() { // prompt user to enter x
     int usr_x;
     cout << "Give the x of the map: ";
     cin >> usr_x;
@@ -29,7 +29,7 @@ int dialogue::get_x() {
     return usr_x;
 }
 
-int dialogue::get_y() {
+int dialogue::get_y() { // prompt user to enter y
     int usr_y;
     cout << "Give the y of the map: ";
     cin >> usr_y;
@@ -40,7 +40,7 @@ int dialogue::get_y() {
     return usr_y;
 }
 
-char dialogue::get_race() {
+char dialogue::get_race() { // prompt user to enter race
     char usr_race;
     cout << "Specify the team you support\n(\"v\"/\"V\" for vampires OR \"w\"/\"W\" for werewolves): ";
     cin >> usr_race;
@@ -51,7 +51,7 @@ char dialogue::get_race() {
     return usr_race;
 }
 
-void dialogue::closing_message() {
+void dialogue::closing_message() {  // ending message
     system("cls");
     //---------------first line----------------
     cout << char(201);

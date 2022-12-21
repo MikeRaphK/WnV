@@ -1,6 +1,6 @@
 #include "avatar.hpp"
 
-avatar::avatar(char race) : entity() {
+avatar::avatar(char race) : entity() {  // avatar constructor utilizes entity default constructor
     if (race == 'v' || race == 'V') {
         vamp = true;
         were = false;
@@ -12,11 +12,11 @@ avatar::avatar(char race) : entity() {
     potion = 1;
 }
 
-bool avatar::is_vampire() {
+bool avatar::is_vampire() { // returns true if avatar is vampire, false otherwise
     return vamp == true;
 }
 
-bool avatar::is_werewolf() {
+bool avatar::is_werewolf() { // returns true if avatar is werewolf, false otherwise
     return were == true;
 }
 

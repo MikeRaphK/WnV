@@ -1,6 +1,7 @@
 #include "vampire.hpp"
 #include "werewolf.hpp"
 
+// avatar inherits entity class
 class avatar : public entity {
     public:
         avatar(char race);

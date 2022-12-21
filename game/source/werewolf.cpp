@@ -1,6 +1,6 @@
 #include "werewolf.hpp"
 
-werewolf::werewolf() : entity() {}
+werewolf::werewolf() : entity() {}  // werewolf constructor utilizes entity default constructor
 
 void werewolf::move(map &m) {
     /*

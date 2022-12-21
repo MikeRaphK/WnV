@@ -11,6 +11,7 @@ int main() {
     user.starting_message();
     wnv game(user.get_race(), user.get_y(), user.get_x());
 
+    // main game loop
     while (!game.is_game_finished()) {
         game.show();
         game.player_turn();
@@ -18,6 +19,8 @@ int main() {
         game.werewolf_turn();
         game.interactions();
     }
+
+    // game result
     game.result();
     user.closing_message();
 

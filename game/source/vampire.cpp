@@ -1,6 +1,6 @@
 #include "vampire.hpp"
 
-vampire::vampire() : entity() {}
+vampire::vampire() : entity() {}    // vampire constructor utilizes entity default constructor
 
 void vampire::move(map &m) {
     /*

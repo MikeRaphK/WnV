@@ -75,14 +75,14 @@ bool map::is_werewolf(int in_x, int in_y) { // returns true if there is a vampir
     return m[in_x][in_y] == 'w' || m[in_x][in_y] == 'W';
 }
 
-bool map::in_map(int in_x, int in_y) {
+bool map::in_map(int in_x, int in_y) {  // returns true if the specified coordinates are inside the map, false otherwise
     if(in_x  < 0 || in_y < 0 || in_x + 1 > x || in_y + 1 > y) 
         return false;
     else 
         return true;
 }
 
-void map::clear_cell(int in_x, int in_y) {
+void map::clear_cell(int in_x, int in_y) {  // turns specified cell into an empty cell
     m[in_x][in_y] = ' ';
 }
 

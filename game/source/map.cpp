@@ -70,17 +70,16 @@ bool map::is_vampire(int in_x, int in_y) { // returns true if there is a vampire
 }
 
 bool map::is_werewolf(int in_x, int in_y) { // returns true if there is a vampire in the selected position, false otherwise 
-    if (in_x >= x || in_y >= y) return false;
+    if (in_x >= x || in_y >= y) 
+        return false;
     return m[in_x][in_y] == 'w' || m[in_x][in_y] == 'W';
 }
 
 bool map::in_map(int in_x, int in_y) {
-    if(in_x  < 0 || in_y < 0 || in_x + 1 > x || in_y + 1 > y) {
+    if(in_x  < 0 || in_y < 0 || in_x + 1 > x || in_y + 1 > y) 
         return false;
-    }
-    else {
+    else 
         return true;
-    } 
 }
 
 void map::clear_cell(int in_x, int in_y) {

@@ -251,7 +251,6 @@ int wnv::coords_to_id(int in_x, int in_y, char type) { // translate map coordina
     return -1;
 }
 
-
 void wnv::show() {  // prints time, round, map and player stats
     system("cls");
     cout << "Time: " << time <<  "   |   Turn: " << turn << endl;

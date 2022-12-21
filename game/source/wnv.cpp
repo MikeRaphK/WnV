@@ -54,7 +54,10 @@ wnv::wnv(char race, int in_y, int in_x) : m(in_x, in_y), player(race) {
 //-----------------------------------------
 };
 
-wnv::~wnv() {}
+wnv::~wnv() {
+    delete [] vampires;
+    delete [] werewolfs;
+}
 
 void wnv::player_turn() {   // During their turn the player can move, wait, pause or quit
     while (true) {

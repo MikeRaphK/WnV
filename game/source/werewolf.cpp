@@ -2,8 +2,6 @@
 
 werewolf::werewolf() : entity() {}
 
-werewolf::~werewolf() {}
-
 void werewolf::move(map &m) {
     /*
     ╔═════╦═════╦═════╗

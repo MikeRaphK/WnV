@@ -7,14 +7,6 @@ entity::entity() : attack(1 + rand()%3), defense(1 + rand()%2) {  // attack: [1,
     health = 10;
 }
 
-int entity::get_attack() const {
-    return attack;
-}
-
-int entity::get_defense() const {
-    return defense;
-}
-
 int entity::get_health() const {
     return health;
 }

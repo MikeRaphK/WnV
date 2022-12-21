@@ -6,9 +6,6 @@
 class entity {
     public:
         entity();
-        entity(const entity &e);
-        int get_attack() const;
-        int get_defense() const;
         int get_health() const;
         int get_potion() const;
         int get_x() const;

@@ -56,30 +56,6 @@ wnv::wnv(char race, int in_y, int in_x) : m(in_x, in_y), player(race) {
 
 wnv::~wnv() {}
 
-void wnv::set_vampires(vampire* array) {
-    vampires = array;
-}
-
-void wnv::set_werewolfs(werewolf* array) {
-    werewolfs = array;
-}
-
-vampire* wnv::get_vampires() {
-    return vampires;
-}
-
-werewolf* wnv::get_werewolfs() {
-    return werewolfs;
-}
-
-map wnv::get_map() {
-    return m;
-}
-
-string wnv::get_time() const {
-    return time;
-}
-
 void wnv::player_turn() {   // During their turn the player can move, wait, pause or quit
     while (true) {
         if (GetKeyState(VK_UP) & 0x8000) {  // if up is pressed, move up

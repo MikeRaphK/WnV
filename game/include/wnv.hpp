@@ -9,12 +9,6 @@ class wnv {
     public:
         wnv(char race, int in_y, int in_x);
         ~wnv();
-        void set_vampires(vampire* array);
-        void set_werewolfs(werewolf* array);
-        vampire* get_vampires();
-        werewolf* get_werewolfs();
-        map get_map();
-        string get_time() const;
         void player_turn();
         void vampire_turn();
         void werewolf_turn();

@@ -1,9 +1,5 @@
 #include "dialogue.hpp"
 
-dialogue::dialogue() {}
-
-dialogue::~dialogue() {}
-
 void dialogue::starting_message() {
     system("cls");
     //---------------first line----------------

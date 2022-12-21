@@ -5,6 +5,5 @@
 class werewolf : public entity {
     public:
         werewolf();
-        ~werewolf();
         void move(map &m);
 };

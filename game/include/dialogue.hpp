@@ -2,8 +2,6 @@
 
 class dialogue {
 public:
-    dialogue();
-    ~dialogue();
     void starting_message();
     void closing_message(); 
     int get_x();

@@ -74,14 +74,6 @@ bool map::is_werewolf(int in_x, int in_y) { // returns true if there is a vampir
     return m[in_x][in_y] == 'w' || m[in_x][in_y] == 'W';
 }
 
-int map::get_x() {
-    return x;
-}
-
-int map::get_y() {
-    return y;
-}
-
 bool map::in_map(int in_x, int in_y) {
     if(in_x  < 0 || in_y < 0 || in_x + 1 > x || in_y + 1 > y) {
         return false;

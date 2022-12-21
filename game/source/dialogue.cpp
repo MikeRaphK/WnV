@@ -41,14 +41,14 @@ int dialogue::get_y() { // prompt user to enter y
 }
 
 char dialogue::get_race() { // prompt user to enter race
-    char usr_race;
+    string usr_race;
     cout << "Specify the team you support\n(\"v\"/\"V\" for vampires OR \"w\"/\"W\" for werewolves): ";
     cin >> usr_race;
-    while (usr_race != 'v' && usr_race != 'V' && usr_race != 'w' && usr_race != 'W') {
-        cout << "(\"v\"/\"V\" for vampires OR \"w\"/\"W\" for werewolves: ";
-        cin >> usr_race; 
+    while ( (usr_race[0] != 'v' && usr_race[0] != 'V' && usr_race[0] != 'w' && usr_race[0] != 'W' )|| usr_race.length() != 1 ) {
+        cout << "(\"v\"/\"V\" for vampires OR \"w\"/\"W\" for werewolves): ";
+        cin >> usr_race;
     }
-    return usr_race;
+    return usr_race[0];
 }
 
 void dialogue::closing_message() {  // ending message

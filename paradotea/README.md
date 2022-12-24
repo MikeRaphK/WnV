@@ -1,6 +1,6 @@
 # Paradotea
 
-In this folder there are all the files asked from the project.
+## In this folder there are all the files asked from the project.
 1. Προσχέδιο σχεδίασης του λογισμικού (pdf) -> ClassesDesign(1).pdf
 
 2. Προσχέδιο υλοποίησης του λογισμικού (pdf) -> ProspectusPrediction(2).pdf
@@ -12,3 +12,8 @@ In this folder there are all the files asked from the project.
 5. Η τελική αναφορά της εργασίας -> FinalReport(5).pdf
 
 6. Ο κώδικας της εργασίας -> game.zip
+
+## Additionally we added the excel files that we worked on to track our progress.
+![Stages](assets/StagesOfProgress.png)
+
+![Progress](assets/Timetable-Animation.gif)

@@ -25,7 +25,6 @@ OOP Project -> Werewolves And Vampires
     <dt>└───Pdf files, GitHub link and YouTube link</dd>
 </dl>
 
-
 ## **How to use**
 Navigate to `game` folder. From there you can run the following commands:
 * ```bash 

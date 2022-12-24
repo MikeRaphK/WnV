@@ -14,6 +14,6 @@
 6. Ο κώδικας της εργασίας -> game.zip
 
 ## Additionally we added the excel files that we worked on to track our progress.
-![Stages](assets/StagesOfProgress.png)
+![Stages](../general/assets/StagesOfProgress.png)
 
-![Progress](assets/Timetable-Animation.gif)
+![Progress](../general/assets/Timetable-Animation.gif)

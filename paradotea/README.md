@@ -11,7 +11,7 @@
 
 5. Η τελική αναφορά της εργασίας -> FinalReport(5).pdf
 
-6. Ο κώδικας της εργασίας -> game.zip
+6. Ο κώδικας της εργασίας -> wnv.zip
 
 ## Additionally we added the excel files that we worked on to track our progress.
 ![Stages](../general/assets/StagesOfProgress.png)
